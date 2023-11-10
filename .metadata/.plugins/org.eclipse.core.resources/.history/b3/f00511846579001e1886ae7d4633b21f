@@ -1,0 +1,38 @@
+package Uicase;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class covinTest {
+	
+	@Test
+	public void testData()
+	{
+ 		 WebDriverManager.chromedriver().setup();
+	    	WebDriver driver = new ChromeDriver();
+	    	driver.get("https://dashboard.cowin.gov.in/");
+//	    	WebDriverWait wait = new  WebDriverWait(driver, Duration.of(20, TimeUnit.SECONDS));
+//	    	wait.until(E)
+	    	WebElement totalVaccinationDoses= driver.findElement(By.xpath("//p[contains(text(),' Total Vaccination Doses ')]/following-sibling::h3/span"));
+	    	
+	    	
+	    	WebElement totalRegistrations=driver.findElement(By.xpath("//p[contains(text(),' Total Registrations ')]/following-sibling::h3/span"));
+	    	String totalVaccinationdoses= totalVaccinationDoses.getText().replaceAll("^[0-9]", "");
+	    	System.out.println(totalVaccinationdoses);
+	     
+	    	Assert.assertEquals(totalVaccinationDoses.getText(), "1");
+	    	Assert.assertEquals(totalRegistrations.getText(), "1");
+	    	
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.group.guru99;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class cordinates {
+
+	int x,y,distance;
+	cordinates(int x, int y)
+	{
+		this.x=x;
+		this.y=y;
+		this.distance=(int) Math.pow(x, 2)+(int) Math.pow(x, 2);
+	}
+	
+}
+class mycomparator implements Comparator<cordinates>
+{
+
+	@Override
+	public int compare(cordinates c1, cordinates c2) {
+		 return c1.distance-c2.distance;
+	}
+	
+}
+class solution {
+	
+	public static void main(String[] args) {
+		PriorityQueue<cordinate> pq= new PriorityQueue();
+		
+	}
+}

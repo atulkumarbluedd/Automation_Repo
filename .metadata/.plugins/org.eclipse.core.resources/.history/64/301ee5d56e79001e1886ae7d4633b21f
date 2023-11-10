@@ -1,0 +1,27 @@
+package com.coco.Tests;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import com.coco.pageObjects.HomePageObject;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BuyNowTests {
+   @Test(description = "Happy Flow")
+   public void buyNowHappyFlow() {
+	    WebDriverManager.getInstance("chrome");
+	   WebDriver driver = new ChromeDriver();
+	   driver.get("https://demo.midtrans.com/");
+	   driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
+	   HomePageObject h= new HomePageObject(driver);
+	   h.clickOnbuynow();
+	   int size=driver.getWindowHandles().size();
+	    driver.switchTo().frame(1);
+	   System.out.println(size+">>>>>>>>");
+	   h.checkOut("1000", "167 j.p colony govind nagar bangalore");
+   }
+}

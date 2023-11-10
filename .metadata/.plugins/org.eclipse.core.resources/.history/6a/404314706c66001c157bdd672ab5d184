@@ -1,0 +1,11 @@
+package com.group.guru99;
+
+import java.util.PriorityQueue;
+
+public class priorityquee {
+public static void main(String[] args) {
+	PriorityQueue<student> pq= new  PriorityQueue<>();
+	pq.add(new student(2,"rohan"));
+	pq.add(new student(3,"sohan"));
+}
+}

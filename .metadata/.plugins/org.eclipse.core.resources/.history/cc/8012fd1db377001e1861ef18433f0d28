@@ -1,0 +1,12 @@
+package codingPackage;
+
+import java.util.Arrays;
+
+public class sampleTest {
+   public static void main(String[] args) {
+	   String h=Integer.toBinaryString(1023);
+	   int k=1023>>10;
+	   System.out.println(k);
+}
+}
+ 

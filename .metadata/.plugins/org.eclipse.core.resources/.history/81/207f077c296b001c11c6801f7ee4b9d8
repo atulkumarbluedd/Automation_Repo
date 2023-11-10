@@ -1,0 +1,106 @@
+package com.group.guru99;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+public class practice {
+	@Test
+	public void sample()
+
+	/*
+	 * [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,
+	 * 10], s = "abcdefghijklmnopqrstuvwxyz"
+	 * 
+	 * 
+	 * Output: [3,60]
+	 */
+	{
+//		int str[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+//				10, 10 };
+//		String str1 = "abcdefghijklmnopqrstuvwxyz";
+//		int linenumber = 0;
+//		String temp = "";
+//
+//		for (int i = 0; i < str1.length();) {
+//			int sum = 0;
+//			while (sum <= 100 && i < str1.length()) {
+//				temp += str1.charAt(i);
+//				sum += str[i++];
+//			}
+//
+//			System.out.println(temp);
+//			temp = "";
+//			linenumber++;
+//		}
+//		System.out.println(linenumber);
+//
+//		String[] array = { "a", "b", "c", "d", "e" };
+//
+//		// Method 1
+//		List<String> list = Arrays.asList(array);
+//		System.out.println(list);
+//
+//		// Method 2
+//		List<String> list1 = new ArrayList<String>();
+//		Collections.addAll(list1, array);
+//		System.out.println(list1);
+//
+//		// Method 3
+//		List<String> list2 = new ArrayList<String>();
+//		for (String text : array) {
+//			list2.add(text);
+//		}
+//		System.out.println(list2);
+//
+//		Integer[] arr = ArrayUtils.toObject(str);
+//
+//		ArrayList<Integer> lists = new ArrayList(Arrays.asList(arr));
+//		System.out.println(lists);
+//
+//		Integer[] what = Arrays.stream(str).boxed().toArray(Integer[]::new);
+//		ArrayList<Integer> lists1 = new ArrayList(Arrays.asList(what));
+//
+//		System.out.println(lists1);
+//
+//		Integer[] intArray = new Integer[lists1.size()];
+//
+//		intArray = lists1.toArray(intArray);
+//		System.out.println(Arrays.toString(intArray));
+//
+//		int[] tttt = lists1.stream().mapToInt(Integer::intValue).toArray();
+//		System.out.println(Arrays.toString(tttt) + "---");
+
+		int[] nums = { 3, 2, 2, 3 }; 
+		int val = 3;
+  
+		 int count=0;
+	        int len=nums.length;
+	        int left=0;
+	        int right=len-1;
+	        
+	        while(left<right)
+	        {
+	        	if(nums[left]==nums[left+1]) {nums[right]};
+	        }
+		 
+	        int j=0; //Index of unique elements
+	        for(int i =1;i<nums.length;i++){
+	            if(nums[i]!=nums[j]){ // Only when it is not same as the previous unique element
+	                nums[++j] = nums[i];// Incrementing the index while assigning the new value
+	            }
+	        }
+	        System.out.println(++j);  // need to return number of elements instead of index
+	    }
+
+
+	}
+
+}

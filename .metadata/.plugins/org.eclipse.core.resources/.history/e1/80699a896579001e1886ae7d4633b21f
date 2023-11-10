@@ -1,0 +1,18 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import PoJo.bodyPojo;
+
+public class servicePOJO {
+
+	public  bodyPojo provideBody(String name, String job)
+	{
+		 SimpleDateFormat format= new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+		 Date date =new Date();
+		String cons = format.format(date);
+		bodyPojo p = new bodyPojo();
+		p.setJob(job);
+		p.setName(name+cons);
+		return p;
+	}
+}

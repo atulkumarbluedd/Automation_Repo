@@ -1,0 +1,54 @@
+package APiTestCases.sample;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class BookingTest {
+	// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+//	Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+	public static void main(String[] args) {
+		String strs[] = {"eat","tea","tan","ate","nats","bats"};	
+		System.out.println(findAnagram(strs));
+	}
+
+   static List<List<String>>  findAnagram(String[] strs)
+   {
+	   List<List<String>> result =new ArrayList<>();
+		  if(strs==null || strs.length==0 ) return result;
+		  Set<String> group = new HashSet<>();
+		  Map<String,List<String>> map = new HashMap<>();
+		  for(String str: strs)
+		  {
+			  char[] chars =str.toCharArray();
+			  Arrays.sort(chars);
+			  String origin = new String(chars);
+			  if(group.add(origin))
+			  {
+				  List<String> list = new ArrayList<String>();
+				  list.add(str);
+				  
+				  map.put(origin, list);
+				  
+			  }
+			  else
+			  {
+				  map.get(origin).add(str);
+			  }
+		  }
+		  for(String g: group)
+		  {
+			  result.add(map.get(g));
+		  }
+			 
+			  
+			  return result;
+	 
+   }
+   
+}

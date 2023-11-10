@@ -1,0 +1,22 @@
+package codingPackage;
+
+import java.util.Arrays;
+
+public class sampleTest {
+   public static void main(String[] args) {
+	    int[] ar= new int[]{2,4,13,7,8,5,10,3};
+	    int k=3;
+	    int left=0;
+	    int right=k;
+	    
+	    for(int i=0;i<ar.length;i++) {
+	    	int max=ar[i];
+	    	 for(int j=i;j<right;j++) {
+	    		 max=Math.max(ar[i], ar[j]);
+	    	 }
+	    	 ar[i]=max;
+	    }
+	    System.out.println(Arrays.toString(ar)); /*{13,13,13,8,10,10}*/
+}
+}
+

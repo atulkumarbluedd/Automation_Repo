@@ -1,0 +1,26 @@
+package Uicase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.github.dockerjava.api.model.Service;
+
+import PoJo.bodyPojo;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import service.PostService;
+
+public class sampleTest {
+	
+	@Test
+	public void sampleApi()
+	{	
+		 RestAssured.baseURI="https://abc.com";
+		 given().get("/user/1").then().
+		
+	}
+
+}

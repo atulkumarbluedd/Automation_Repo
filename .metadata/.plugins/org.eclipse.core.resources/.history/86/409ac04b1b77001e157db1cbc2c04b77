@@ -1,0 +1,20 @@
+package codingPackage;
+
+public class sampleTest {
+   public static void main(String[] args) {
+	   int weight[] = new int[] {1, 2, 3};
+	   int profit[] = new int[] {10, 15, 40};
+	   int capacity=4;
+	   int p=profit.length;
+	   int W=weight.length;
+	   int[] k = new int [W+1];
+	   for(int i=1;i<p+1;i++)
+	   { 
+		   for(int w=W;w>=0;w--) {
+			   k[w]=Math.max(k[w], k[w-weight[i-1]]+profit[i-1]);
+		   }
+		   
+	   }
+	   System.out.println(k[W]);
+}
+}

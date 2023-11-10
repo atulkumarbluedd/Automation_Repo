@@ -1,0 +1,16 @@
+package com.group.guru99;
+
+public class student implements Comparable<student>{
+
+	@Override
+	public int compareTo(student o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}
+public class priorityquee {
+public static void main(String[] args) {
+	
+}
+}

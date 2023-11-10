@@ -1,0 +1,29 @@
+package codingPackage;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+
+public class sample {
+  public static void main(String[] args) {
+	  HashSet<Integer> set = new HashSet();
+	 
+	  System.out.println(set.contains(1));
+	  LinkedList<Integer>[] ll ;
+	    List<Integer>[] buckets = new LinkedList[120];
+	    LinkedList<Integer> list2= new LinkedList<>();
+	    list2.add(1);
+	    list2.add(2);
+	    list2.add(null);
+	   int index= list2.indexOf(null);
+	    System.out.println(index);
+ 
+	    
+	    
+	    
+}
+}

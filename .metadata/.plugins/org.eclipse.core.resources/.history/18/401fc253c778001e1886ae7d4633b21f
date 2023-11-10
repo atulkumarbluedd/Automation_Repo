@@ -1,0 +1,11 @@
+package ResponsePOJO;
+
+import java.util.List;
+
+public class response1 {
+   int id;
+   Category category;
+   String name;
+   List<String> photoUrls;
+   
+}

@@ -1,0 +1,172 @@
+package com.group.guru99;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.testng.annotations.Test;
+
+public class sampleTestcase {
+
+//	 @Test
+//	 public void sampleTestCase()
+//	 {
+//		 JsonParser parser = new JsonParser();
+//		try
+//		{
+//			String path=System.getProperty("user.dir")+"\\src\\Test.json";
+//			System.out.println(path);
+//			FileInputStream is= new FileInputStream(new File(path));
+//			FileReader f=new FileReader(path);
+//		
+//			
+//			Object obj=parser.parse(new FileReader(path));
+//			JsonObject jsonobject=(JsonObject)obj;
+//			JsonObject jso =  jsonobject.get("courses").getAsJsonObject();
+//			 JsonArray choices = jso.get("choices").getAsJsonArray();
+//			 Iterator<JsonElement> itr = choices.iterator();
+//			 String str="";
+//			 while(itr.hasNext())
+//			 {
+//				   str+=itr.next().getAsString();
+//				 
+//			 
+//			 }
+//			 System.out.println(str);	
+//		}
+//		 
+//		catch(Exception ex)
+//		{
+//			ex.printStackTrace();
+//		}
+//	 }
+
+	@Test
+	public void writeJson() throws Exception {
+//		 JsonParser parser = new JsonParser();
+//		 
+//				String path=System.getProperty("user.dir")+"\\src\\Test.json";
+//			 
+//				FileInputStream is= new FileInputStream(new File(path));
+//				FileReader f=new FileReader(path);
+//			
+//				
+//				
+//				Object obj=parser.parse(new FileReader(path));
+//				JsonObject jsonobject=(JsonObject)obj;
+//				JsonObject jso =  jsonobject.get("courses").getAsJsonObject();
+//				 JsonArray choices = jso.get("choices").getAsJsonArray();
+//				 Iterator<JsonElement> itr = choices.iterator();
+//				 String str="";
+//				 while(itr.hasNext())
+//				 {
+//					   str+=itr.next().getAsString();
+//					 
+//				 
+//				 }
+//				 System.out.println(str);	
+
+	}
+
+//	@Test
+//	public void JsonWriter() {
+//
+//		// First Employee
+//		JSONObject employeeDetails = new JSONObject();
+//		employeeDetails.put("firstName", "Lokesh");
+//		employeeDetails.put("lastName", "Gupta");
+//		employeeDetails.put("website", "howtodoinjava.com");
+//
+//		JSONObject employeeObject = new JSONObject();
+//		employeeObject.put("employee", employeeDetails);
+//
+//		// Second Employee
+//		JSONObject employeeDetails2 = new JSONObject();
+//		employeeDetails2.put("firstName", "Brian");
+//		employeeDetails2.put("lastName", "Schultz");
+//		employeeDetails2.put("website", "example.com");
+//
+//		JSONObject employeeObject2 = new JSONObject();
+//		employeeObject2.put("employee", employeeDetails2);
+//
+//		// Add employees to list
+//		JSONArray employeeList = new JSONArray();
+//		employeeList.add(employeeObject);
+//		employeeList.add(employeeObject2);
+//		String path = System.getProperty("user.dir") + "\\src\\Test.json";
+//
+//		// Write JSON file
+//		try (FileWriter file = new FileWriter(path)) {
+//			// We can write any JSONArray or JSONObject instance to the file
+//			file.write(employeeList.toJSONString());
+//			file.flush();
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+
+	@Test(description = "here we are tring to write json using colllection classes")
+	public void jsonwriter_collection() throws FileNotFoundException, IOException, ParseException
+
+	{
+		String path = System.getProperty("user.dir") + "\\src\\Test.json";
+ 
+		HashMap map = new HashMap<>();
+		ArrayList list = new ArrayList();
+		list.add("sample");
+		list.add("paper");
+		list.add("toiletSoap");
+		map.put("sample", list);
+		JSONObject finaloutput = new JSONObject(map) ;
+		System.out.println(finaloutput);
+		
+		FileWriter is = new FileWriter(new File(path));
+		 is.write(finaloutput.toString());
+		is.close();
+		
+		
+//		System.out.println(json);
+
+	}
+	
+	@Test(description = "here we are writing file using json arrays and json objects without collection classes")
+	public void jsonwriter_json() throws IOException
+	{
+		String path = System.getProperty("user.dir") + "\\src\\Test.json";
+		JSONObject jobj= new JSONObject();
+		jobj.put("name", "sohan");
+		jobj.put("age", 13);
+		jobj.put("gender", "male");
+		
+		JSONArray arr= new JSONArray();
+		arr.add("courses");
+		JSONObject courseObj= new JSONObject();
+		courseObj.put("math", "pass");
+		courseObj.put("science", "fail");
+		courseObj.put("homescience", "justpass");
+		jobj.put("cousres", courseObj);
+		JSONArray cousresname= new JSONArray();
+		cousresname.add("math");
+		cousresname.add("science");
+		cousresname.add("sociallogy");
+		jobj.put("variousCources", cousresname);
+		
+		
+		FileWriter wr= new FileWriter(new File(path));
+		wr.write(jobj.toString());
+		wr.close();
+		
+		}
+
+}

@@ -1,0 +1,14 @@
+package codingPackage;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+
+public class sample {
+  public static void main(String[] args) {
+	  HashSet<Integer> set = new HashSet();
+	 
+	  System.out.println(set.contains(1));
+}
+}

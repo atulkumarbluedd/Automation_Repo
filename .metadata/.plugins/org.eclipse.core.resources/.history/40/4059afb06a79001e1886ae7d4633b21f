@@ -1,0 +1,33 @@
+package com.coco.pageObjects;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+public class HomePageObject {
+	WebDriver driver;
+   @FindBy(xpath="//a[text()='BUY NOW']")
+   private WebElement buynowButton;
+   @FindBy(className = "text-right")
+   private WebElement pillowscount;
+   
+   WebDriver HomePageObject(WebDriver driver){
+	    PageFactory.initElements(driver, this);
+   }
+   public void clickOnbuynow() {
+	   WebDriverWait wait = new WebDriverWait(driver,Duration.ofMillis(2000));
+	   Assert.assertEquals(buynowButton.isDisplayed(), true);
+	   buynowButton.click();
+   }
+   public void checkOut() {
+	   
+   }
+   
+   
+}

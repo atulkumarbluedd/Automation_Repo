@@ -1,0 +1,15 @@
+package com.group.guru99;
+
+import org.testng.annotations.Test;
+
+public class jdbcConnection {
+	
+	
+	@Test
+	public void testcase1()
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+		
+	}
+
+}

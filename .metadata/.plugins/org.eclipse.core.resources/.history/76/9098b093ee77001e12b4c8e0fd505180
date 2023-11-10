@@ -1,0 +1,38 @@
+package Uicase;
+
+import org.testng.annotations.Test;
+
+import helper.propertyReader;
+
+import static io.restassured.RestAssured.given;
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
+
+import io.restassured.RestAssured;
+import io.restassured.module.jsv.JsonSchemaValidator;
+
+public class sampleTest {
+	
+	@Test
+	public void sampleApi() throws IOException
+	{	
+//		RestAssured.baseURI = "https://jsonplaceholder.typicode.com/posts/2";
+//
+//	      //obtain response
+//	      given()
+//	      .when().get()	
+//
+//	      //verify JSON Schema
+//	      .then().assertThat()
+//	      .body(JsonSchemaValidator.
+//	      matchesJsonSchema());
+//	     
+		Properties temp = new propertyReader().readPropertyFile("C:\\Users\\91977\\eclipse-workspace\\practiceProject\\TestProject\\Artifacts\\local.properties");
+
+		 String str= (String) temp.get("path");
+		 System.err.println(str);
+		
+	}
+
+}

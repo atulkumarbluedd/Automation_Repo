@@ -1,0 +1,30 @@
+package service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.testng.Assert;
+
+import PoJo.bodyPojo;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class PostService {
+
+	public void createResource(String name, String title)
+	{
+		 RestAssured.baseURI="https://reqres.in/";
+		 SimpleDateFormat format= new SimpleDateFormat("mm:ss");
+		 Date date =new Date();
+		 String cons = format.format(date); 
+//		 String morpString="morpheus"+cons;
+//		String leader="leader"+cons;
+		
+		bodyPojo p = new bodyPojo();
+		p.setJob(name);
+		p.setName(title);
+		Response response =RestAssured.given().body(p).post("/api/users"); 
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(), 201);
+	}
+}

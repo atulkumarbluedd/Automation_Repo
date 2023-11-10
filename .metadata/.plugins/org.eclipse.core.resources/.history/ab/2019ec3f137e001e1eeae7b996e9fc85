@@ -1,0 +1,11 @@
+package demo;
+
+import org.testng.annotations.BeforeTest;
+
+public class base {
+   @BeforeTest
+   public void executor() {
+	   System.out.println("coming from base");
+	   String name="454";
+   }
+}

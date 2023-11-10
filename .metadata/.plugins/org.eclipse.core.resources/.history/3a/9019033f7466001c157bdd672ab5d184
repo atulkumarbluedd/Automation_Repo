@@ -1,0 +1,26 @@
+package com.group.guru99;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class cordinates {
+
+	int x, y, distance;
+
+	cordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
+		this.distance = (int) Math.pow(x, 2) + (int) Math.pow(x, 2);
+	}
+
+}
+
+class mycomparator implements Comparable<cordinates> {
+
+	@Override
+	public int compareTo(cordinates c) {
+		 if(c.distance>c.distance)
+	}
+
+} }

@@ -1,0 +1,33 @@
+package com.coco.Tests;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
+public class sample {
+  public static void main(String[] args) {
+    
+	  
+	  // Creating an empty Stack 
+      Stack<String> stack = new Stack<String>(); 
+
+      // Use add() method to add elements into the Stack 
+      stack.add("Welcome"); 
+      stack.add("To"); 
+      stack.add("Geeks"); 
+      stack.add("For"); 
+      stack.add("Geeks"); 
+      
+     int[] arr= stack.stream().mapToInt(i->i).toArray();
+     
+     List<String> list = Arrays.asList("3", "6", "8",  
+             "14", "15"); 
+
+// Using Stream mapToInt(ToIntFunction mapper) 
+// and displaying the corresponding IntStream 
+list.stream().mapToInt(num -> Integer.parseInt(num)) 
+.filter(num -> num % 3 == 0) 
+.forEach(System.out::println); 
+
+}
+}

@@ -1,0 +1,25 @@
+package codingPackage;
+
+public class sampleTest {
+   public static void main(String[] args) {
+	    
+}
+}
+
+/*
+ * 
+ * most W weight in it]. The task is to put the items into the bag such that the sum of profits associated with them is the maximum possible. 
+Inputs:-
+weight[] = {1, 2, 3}, profit[] = {10, 15, 40}, Capacity = 4
+
+Output:
+50
+Dinesh R5:24 PM
+Given an array and an integer K, find the maximum for each and every contiguous subarray of size K.
+
+Inputs:-
+Int a[] ={2,4,13,7,8,5,10,3}
+Int k =3
+
+Output={13,13,13,8,10,10}*/
+ */

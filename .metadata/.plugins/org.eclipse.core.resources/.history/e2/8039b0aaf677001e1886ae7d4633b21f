@@ -1,0 +1,38 @@
+package Uicase;
+
+import org.testng.annotations.Test;
+
+ 
+import helper.propertyReader;
+
+import static io.restassured.RestAssured.given;
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
+
+import io.restassured.RestAssured;
+import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import lombok.builder;
+
+public class sampleTest {
+	
+	@Test
+	public void sampleApi() throws IOException
+	{	
+		 
+
+	      //obtain response
+		  given().when().get("https://petstore.swagger.io/v2/pet/findByStatus?status=available");
+           
+		  res.builder
+	           
+//		Properties temp = new propertyReader().readPropertyFile(".\\TestProject\\Artifacts\\local.properties");
+//
+//		 String str= (String) temp.get("path");
+//		 System.err.println(str);
+		
+	}
+
+}

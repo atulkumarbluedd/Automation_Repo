@@ -1,0 +1,11 @@
+package com.group.guru99;
+
+public class cordinates {
+
+	int x,y,distance;
+	cordinates(int x, int y)
+	{
+		
+	}
+	
+}

@@ -1,0 +1,14 @@
+package com.qa.gorest.tests;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+
+public class SampleTest {
+   
+	@Test
+	public void sampleApi() {
+		RestAssured.baseURI="petstore.swagger.io";
+	   
+	}
+}

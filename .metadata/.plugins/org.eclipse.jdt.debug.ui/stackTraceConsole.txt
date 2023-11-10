@@ -1,0 +1,10 @@
+io.cucumber.junit.UndefinedStepException: The step 'user calls post API with Payload' is undefined.
+You can implement this step using the snippet(s) below:
+
+@Given("user calls post API with Payload")
+public void user_calls_post_api_with_payload() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+

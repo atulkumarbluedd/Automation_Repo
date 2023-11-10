@@ -1,0 +1,8 @@
+package com.group.guru99;
+
+public class student implements Comparable<student>{
+	
+}
+public class priorityquee {
+
+}

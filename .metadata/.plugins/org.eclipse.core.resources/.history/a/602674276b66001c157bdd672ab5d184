@@ -1,0 +1,11 @@
+package com.group.guru99;
+
+
+public class student implements Comparable<student>{
+
+	@Override
+	public int compareTo(student o) {
+		 
+	}
+	
+}

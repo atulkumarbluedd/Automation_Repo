@@ -1,0 +1,18 @@
+package com.group.guru99;
+
+
+public class student implements Comparable<student>{
+
+	
+	private int rank;
+	private String name;
+	
+	@Override
+	public int compareTo(int rank,String name) {
+		 
+		 this.rank=rank;
+		 this.name=name;
+		 
+	}
+	
+}

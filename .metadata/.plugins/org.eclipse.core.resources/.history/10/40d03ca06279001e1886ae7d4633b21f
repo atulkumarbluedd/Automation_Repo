@@ -1,0 +1,52 @@
+package ResponsePOJO;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class response1 {
+   public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<String> getPhotoUrls() {
+		return photoUrls;
+	}
+	public void setPhotoUrls(List<String> photoUrls) {
+		this.photoUrls = photoUrls;
+	}
+	public Tags getTags() {
+		return tags;
+	}
+	public void setTags(Tags tags) {
+		this.tags = tags;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+int id;
+   Category category;
+   String name;
+   List<String> photoUrls;
+   Tags tags;
+   String status;
+   
+}

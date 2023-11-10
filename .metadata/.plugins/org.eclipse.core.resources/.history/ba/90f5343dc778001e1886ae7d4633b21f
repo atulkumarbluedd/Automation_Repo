@@ -1,0 +1,6 @@
+package ResponsePOJO;
+
+public class response1 {
+   int id;
+   Category category;
+}

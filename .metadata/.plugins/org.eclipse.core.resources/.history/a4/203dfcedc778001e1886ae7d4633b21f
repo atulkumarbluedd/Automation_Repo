@@ -1,0 +1,6 @@
+package ResponsePOJO;
+
+public class Tags {
+     String id;
+     String name;
+}

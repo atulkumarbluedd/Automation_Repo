@@ -1,0 +1,50 @@
+package com.group.guru99;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+public class practice {
+	@Test
+	public void sample()
+
+	/*
+	 * [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,
+	 * 10], s = "abcdefghijklmnopqrstuvwxyz"
+	 * 	
+	 * 
+	 * Output: [3,60]
+	 */
+	{
+		int str[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				10, 10 };
+		String str1 = "abcdefghijklmnopqrstuvwxyz";
+		int linenumber=0; String temp="";
+
+		for (int i = 0; i < str1.length();) {
+			int sum = 0;
+			while (sum <= 100 && i<str1.length()) {
+				temp+=str1.charAt(i);
+				sum += str[i++];
+			}
+			 
+			System.out.println(temp);
+			temp="";
+			linenumber++;
+		}
+		System.out.println(linenumber);
+		
+		int value=(int) Math.pow(2, 3);
+		System.out.println(value);
+		  HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		  int min=90999,index=0;
+		  for(Map.Entry<Integer, Integer> entry: map.entrySet())
+		  {
+			  if(min>entry.getValue()) {min=entry.getValue() index=entry.getKey();}
+			  
+		  }
+
+	}
+
+}

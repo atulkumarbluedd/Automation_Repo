@@ -1,0 +1,10 @@
+package com.coco.Tests;
+
+import org.testng.annotations.Test;
+
+public class BuyNowTests {
+   @Test(description = "Happy Flow")
+   public void buyNowHappyFlow() {
+	   
+   }
+}

@@ -1,0 +1,25 @@
+package com.group.guru99;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.testng.annotations.Test;
+
+public class jdbcConnection {
+	
+	
+	@Test
+	public void testcase1() throws ClassNotFoundException, SQLException
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection cn= DriverManager.getConnection("jdbc:mysql//localhost:3306/personalatuldb","root","Aciron.1");
+		
+		Statement re=cn.createStatement();
+		ResultSet result=re.executeQuery("select * from sample");
+		while()
+	}
+
+}
