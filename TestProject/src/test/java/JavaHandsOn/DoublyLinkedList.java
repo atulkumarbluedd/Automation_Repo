@@ -48,8 +48,9 @@ public class DoublyLinkedList {
 			current = current.next;
 		}
 	}
-	public static void main(String[] args) {
-		DoublyLinkedList dList = new DoublyLinkedList();  
+	public static void main(String[] args) {  
+		  
+        DoublyLinkedList dList = new DoublyLinkedList();  
         //Add nodes to the list  
         dList.addNode(1);  
         dList.addNode(2);  
@@ -59,6 +60,6 @@ public class DoublyLinkedList {
   
         //Displays the nodes present in the list  
         dList.display();  
+    }  
 
-	}
 }
