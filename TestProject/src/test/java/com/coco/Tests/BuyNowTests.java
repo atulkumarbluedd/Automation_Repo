@@ -14,7 +14,7 @@ public class BuyNowTests {
    @Test(description = "Happy Flow")
    
    public void buyNowHappyFlow() throws InterruptedException {
-	    WebDriverManager.getInstance("chrome");
+	    
 	   WebDriver driver = new ChromeDriver();
 	   driver.get("https://demo.midtrans.com/");
 	   driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
