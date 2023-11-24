@@ -1,5 +1,7 @@
 package SeleniumHandsOn;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -9,7 +11,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Listeners implements ITestListener {
+public class Listeners extends seleniumUtils implements ITestListener {
 	ExtentTest test;
 	ExtentReports extent = ExtentReporterNg.getReporterObject();
 	WebDriver driver;
@@ -38,16 +40,29 @@ public class Listeners implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		test.log(Status.FAIL, "test failed !!");
 		test.fail(result.getThrowable());
-//
+        /* below code is to get driver in case driver is required to be used*/
 //		try {
 //			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
-//			test.addScreenCaptureFromPath(
-//					new seleniumUtils().getScreenShotDestination(driver, result.getMethod().getMethodName()));
+//
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-
+		try {
+			test.addScreenCaptureFromPath(
+					new seleniumUtils().getScreenShotDestination(result.getMethod().getMethodName()),
+					result.getMethod().getMethodName());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+//		try {
+//			String destination =getScreenShotDestination(result.getMethod().getMethodName());
+//			test.addScreenCaptureFromPath(destination,result.getMethod().getMethodName());
+//			 
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override
