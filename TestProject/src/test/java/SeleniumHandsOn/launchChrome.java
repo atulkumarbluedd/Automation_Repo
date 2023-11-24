@@ -11,7 +11,7 @@ public class launchChrome {
 	
 	@Test(description = "Test chrome launching")
 	public void cromeTest() {
-		   WebDriverManager.getInstance("chrome");
+		
 		   WebDriver driver = new ChromeDriver();
 		   System.out.println("Launching chrome browser");
 		   driver.get("https://demo.midtrans.com/");
