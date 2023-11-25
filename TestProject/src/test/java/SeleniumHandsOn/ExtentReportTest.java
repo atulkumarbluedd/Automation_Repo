@@ -34,8 +34,8 @@ public class ExtentReportTest {
 
 		/* to fail it explicitly !! */
 		test.fail("result doesn't match !!");
-
 		extent.flush();
+	
 	}
 
 	public static ExtentReports extentReportConfig() {
