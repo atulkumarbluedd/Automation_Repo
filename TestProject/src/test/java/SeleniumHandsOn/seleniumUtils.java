@@ -19,15 +19,30 @@ import org.testng.annotations.Test;
 public class seleniumUtils {
 	static WebDriver driver;
 
-	 
-	@BeforeClass
+	/*
+	 * Here we are using alwaysRun is true since we wanted it to be executed every
+	 * time if we wont use always run as true then it will not execute at the time
+	 * of group execution below method is for configuration so no matter what we
+	 * have to execute at every case whether the group is tagged or not
+	 * 
+	 */
+	@BeforeClass(alwaysRun = true)
 	public void configureChrome() {
-		 driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		System.out.println("Launching chrome browser");
 		driver.get("https://demo.midtrans.com/");
 
 		driver.manage().window().maximize();
 	}
+
+	/**
+	 * this method is to use take screenshots and return the destination of the
+	 * screen shot
+	 * 
+	 * @param testCaseName
+	 * @return
+	 * @throws IOException
+	 */
 
 	public static String getScreenShotDestination(String testCaseName) throws IOException {
 		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

@@ -40,7 +40,7 @@ public class Listeners extends seleniumUtils implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		test.log(Status.FAIL, "test failed !!");
 		test.fail(result.getThrowable());
-        /* below code is to get driver in case driver is required to be used*/
+        /* below code is to get driver in case d*/
 //		try {
 //			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
 //

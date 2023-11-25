@@ -15,13 +15,17 @@ public class launchChrome extends seleniumUtils{
 
 	 
 
-	@Test(description = "Test chrome launching")
+	@Test(description = "Test chrome launching", groups = {"smoke"})
 	public void chromeConfiguration() throws IOException {
 		System.out.println("Launching chrome browser");
 		driver.get("https://demo.midtrans.com/");
 
 		driver.manage().window().maximize();
 		Assert.assertEquals(true, true);
+		/* below parameter is used from command line when we use below command
+		 *  mvn test -PRegression -DnameOFme="atulKumarArya"*/
+		String temp = System.getProperty("nameOFme");
+		System.out.println(temp +" >>>>>>>>>>>>>>>>>>>>>");
 
 	}
 	@Test(description = "Test chrome launching with assertion failed !!")
