@@ -26,6 +26,7 @@ public class launchChrome extends seleniumUtils{
 		 *  mvn test -PRegression -DnameOFme="atulKumarArya"*/
 		String temp = System.getProperty("nameOFme");
 		System.out.println(temp +" >>>>>>>>>>>>>>>>>>>>>");
+		System.out.println(temp +" >>>>>>>>>>>>>>>>>>>>>");
 
 	}
 	@Test(description = "Test chrome launching with assertion failed !!")
