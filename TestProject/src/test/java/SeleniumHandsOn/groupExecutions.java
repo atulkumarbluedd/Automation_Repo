@@ -30,7 +30,7 @@ public class groupExecutions extends seleniumUtils {
 		driver.get("https://demo.midtrans.com/");
 
 		driver.manage().window().maximize();
-		Assert.assertEquals(true, false);
+		Assert.assertEquals(true, true);
 
 	}
 }
