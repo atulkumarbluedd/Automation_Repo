@@ -28,7 +28,6 @@ public class ExtentReportTest {
 		 */
 
 		ExtentTest test = extent.createTest("initial demo");
-
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://google.com");
 		System.out.println(driver.getCurrentUrl());
