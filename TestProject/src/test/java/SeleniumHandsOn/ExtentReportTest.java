@@ -14,6 +14,7 @@ public class ExtentReportTest {
 
 	@BeforeTest
 	public void config() {
+		/* here we are adding it in before test so that we need not to do it again and again*/
 		extentReportConfig();
 
 	}
