@@ -16,7 +16,7 @@ import SeleniumHandsOn.ConfigSource.CONFIGS;
 
 public class DriverFactory extends seleniumBaseUtils{
 	
-  public WebDriver getDriver() throws FileNotFoundException, IOException {
+  public static WebDriver getDriver() throws FileNotFoundException, IOException {
 	  WebDriver  driver = null;
 		String browser = propertyReader(CONFIGS.BROWSER_NAME);
 		String runMode = propertyReader(CONFIGS.RUNMODE);
