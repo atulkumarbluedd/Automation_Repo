@@ -11,7 +11,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Listeners extends seleniumUtils implements ITestListener {
+public class Listeners extends seleniumBaseUtils implements ITestListener {
 	ExtentTest test;
 	ExtentReports extent = ExtentReporterNg.getReporterObject();
 	WebDriver driver;
@@ -50,7 +50,7 @@ public class Listeners extends seleniumUtils implements ITestListener {
 //		}
 		try {
 			test.addScreenCaptureFromPath(
-					new seleniumUtils().getScreenShotDestination(result.getMethod().getMethodName()),
+					new seleniumBaseUtils().getScreenShotDestination(result.getMethod().getMethodName()),
 					result.getMethod().getMethodName());
 		} catch (IOException e) {
 			e.printStackTrace();

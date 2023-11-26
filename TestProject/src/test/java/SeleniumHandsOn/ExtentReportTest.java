@@ -2,19 +2,24 @@ package SeleniumHandsOn;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.mongodb.assertions.Assertions;
 
 public class ExtentReportTest {
 	static ExtentReports extent;
 
 	@BeforeTest
 	public void config() {
-		/* here we are adding it in before test so that we need not to do it again and again*/
+		/*
+		 * here we are adding it in before test so that we need not to do it again and
+		 * again
+		 */
 		extentReportConfig();
 
 	}
@@ -35,7 +40,9 @@ public class ExtentReportTest {
 		/* to fail it explicitly !! */
 		test.fail("result doesn't match !!");
 		extent.flush();
-	
+		 
+		 
+
 	}
 
 	public static ExtentReports extentReportConfig() {

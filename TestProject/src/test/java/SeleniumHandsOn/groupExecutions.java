@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class groupExecutions extends seleniumUtils {
+public class groupExecutions extends seleniumBaseUtils {
 
 	/**
 	 * for more details follow below link
