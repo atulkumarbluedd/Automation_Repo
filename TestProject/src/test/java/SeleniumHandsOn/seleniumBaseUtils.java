@@ -28,6 +28,7 @@ import com.github.dockerjava.api.model.Config;
 
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 import SeleniumHandsOn.ConfigSource.constants;
+import SeleniumHandsOn.Factories.DriverFactory;
 import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
 
 public class seleniumBaseUtils {
@@ -44,31 +45,10 @@ public class seleniumBaseUtils {
 	 * 
 	 * @throws FileNotFoundException
 	 */
-	@SuppressWarnings("unlikely-arg-type")
+
 	@BeforeClass(alwaysRun = true)
 	public void initDriver() throws FileNotFoundException, IOException {
-
-		String browser = propertyReader(CONFIGS.BROWSER_NAME);
-		String runMode = propertyReader(CONFIGS.RUNMODE);
-
-		if (Objects.isNull(driver)) {
-			if (browser.equalsIgnoreCase("chrome")) {
-				if (runMode.equalsIgnoreCase("remote")) {
-					DesiredCapabilities cap = new DesiredCapabilities();
-					cap.setBrowserName(browser);
-					driver = new RemoteWebDriver(new URL(propertyReader(CONFIGS.GRID_URL)), cap);
-				} else
-					driver = new ChromeDriver();
-			} else if (browser.equalsIgnoreCase("firefox")) {
-				driver = new FirefoxDriver();
-			}
-
-		} else {
-			driver = new ChromeDriver();
-			System.out.println("Launching chrome browser as no browser parameter came");
-
-		}
-		driver.manage().window().maximize();
+		driver = DriverFactory.getDriver();
 	}
 
 	/**
@@ -118,12 +98,11 @@ public class seleniumBaseUtils {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public String propertyReader(CONFIGS key) throws FileNotFoundException, IOException {
+	public static String propertyReader(CONFIGS key) throws FileNotFoundException, IOException {
 		String File_Path = System.getProperty("user.dir") + "\\resources\\config.properties";
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(File_Path);
 		prop.load(fis);
-
 		return prop.getProperty(key.toString());
 
 	}
