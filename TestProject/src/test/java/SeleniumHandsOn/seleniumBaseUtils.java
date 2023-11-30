@@ -28,7 +28,7 @@ import com.github.dockerjava.api.model.Config;
 
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 import SeleniumHandsOn.ConfigSource.constants;
-import SeleniumHandsOn.Factories.DriverFactory;
+import SeleniumHandsOn.Factories.DriverFactori;
 import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
 
 public class seleniumBaseUtils {
@@ -48,7 +48,7 @@ public class seleniumBaseUtils {
 
 	@BeforeClass(alwaysRun = true)
 	public void initDriver() throws FileNotFoundException, IOException {
-		driver = DriverFactory.getDriver();
+		driver = DriverFactori.getDriver();
 	}
 
 	/**

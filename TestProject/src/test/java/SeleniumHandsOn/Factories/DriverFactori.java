@@ -14,10 +14,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import SeleniumHandsOn.seleniumBaseUtils;
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 
-public class DriverFactory extends seleniumBaseUtils{
-	
-  public static WebDriver getDriver() throws FileNotFoundException, IOException {
-	  WebDriver  driver = null;
+public class DriverFactori extends seleniumBaseUtils {
+
+	public static WebDriver getDriver() throws FileNotFoundException, IOException {
+		WebDriver driver = null;
 		String browser = propertyReader(CONFIGS.BROWSER_NAME);
 		String runMode = propertyReader(CONFIGS.RUNMODE);
 
@@ -30,6 +30,11 @@ public class DriverFactory extends seleniumBaseUtils{
 				} else
 					driver = new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
+				if (runMode.equalsIgnoreCase("remote")) {
+					DesiredCapabilities cap = new DesiredCapabilities();
+					cap.setBrowserName(browser);
+					driver = new RemoteWebDriver(new URL(propertyReader(CONFIGS.GRID_URL)), cap);
+				} else
 				driver = new FirefoxDriver();
 			}
 
@@ -40,5 +45,5 @@ public class DriverFactory extends seleniumBaseUtils{
 		}
 		driver.manage().window().maximize();
 		return driver;
-  }
+	}
 }

@@ -8,6 +8,7 @@ public class Application {
 	public Application(UIFactory factory) {
 		button= factory.createButton();
 		checkbox=factory.creaCheckBox();
+		System.err.println();
 	}
 	public void paint() {
 		button.paint();
