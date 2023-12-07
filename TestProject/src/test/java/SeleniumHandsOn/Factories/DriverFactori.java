@@ -3,7 +3,9 @@ package SeleniumHandsOn.Factories;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,7 +37,7 @@ public class DriverFactori extends seleniumBaseUtils {
 					cap.setBrowserName(browser);
 					driver = new RemoteWebDriver(new URL(propertyReader(CONFIGS.GRID_URL)), cap);
 				} else
-				driver = new FirefoxDriver();
+					driver = new FirefoxDriver();
 			}
 
 		} else {
@@ -44,6 +46,7 @@ public class DriverFactori extends seleniumBaseUtils {
 
 		}
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(80000));
 		return driver;
 	}
 }

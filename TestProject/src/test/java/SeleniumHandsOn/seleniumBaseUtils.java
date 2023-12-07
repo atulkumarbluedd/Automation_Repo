@@ -14,9 +14,11 @@ import java.util.Properties;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -110,5 +112,10 @@ public class seleniumBaseUtils {
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		driver.quit();
+	}
+
+	public static void highlightElement(WebElement element) {
+		 JavascriptExecutor jse=(JavascriptExecutor)driver;
+		 jse.executeScript("arguments[0].setAttribute('style','background: yellow; border: 10px solid blue;');", element);
 	}
 }
