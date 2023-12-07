@@ -125,7 +125,7 @@ public class seleniumBaseUtils {
 	 */
 	public static void highlightElement(WebElement element) {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("arguments[0].setAttribute('style','background: yellow; border: 10px solid blue;');",
+		jse.executeScript("arguments[0].setAttribute('style','background:  yellow; border: 10px solid blue;');",
 				element);
 	}
 }

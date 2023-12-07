@@ -1,20 +1,11 @@
 package SeleniumHandsOn;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.CompletableFuture;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import bsh.Capabilities;
-import io.appium.java_client.remote.MobileBrowserType;
-import jdk.jfr.DataAmount;
 
 public class Selenium_grid_usingDocker {
 
