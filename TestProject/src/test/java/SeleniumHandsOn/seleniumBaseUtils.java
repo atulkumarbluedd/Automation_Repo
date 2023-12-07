@@ -93,20 +93,24 @@ public class seleniumBaseUtils {
 	}
 
 	/**
-	 * method is used to get single property of the key
+	 * method is used to get single property of the key here we have used try with
+	 * resources so it will close automatically
 	 * 
 	 * @param key
 	 * @return
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static String propertyReader(CONFIGS key) throws FileNotFoundException, IOException {
+	public static String propertyReader(CONFIGS key) {
 		String File_Path = System.getProperty("user.dir") + "\\resources\\config.properties";
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream(File_Path);
-		prop.load(fis);
-		return prop.getProperty(key.toString());
 
+		try (FileInputStream fis = new FileInputStream(File_Path)) {
+			prop.load(fis);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return prop.getProperty(key.toString());
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -114,8 +118,14 @@ public class seleniumBaseUtils {
 		driver.quit();
 	}
 
+	/**
+	 * this method is used to highlight the element in blue color
+	 * 
+	 * @param element
+	 */
 	public static void highlightElement(WebElement element) {
-		 JavascriptExecutor jse=(JavascriptExecutor)driver;
-		 jse.executeScript("arguments[0].setAttribute('style','background: yellow; border: 10px solid blue;');", element);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].setAttribute('style','background: yellow; border: 10px solid blue;');",
+				element);
 	}
 }
