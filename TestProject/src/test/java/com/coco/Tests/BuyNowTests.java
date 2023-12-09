@@ -16,8 +16,6 @@ public class BuyNowTests {
 	   WebDriver driver = new FirefoxDriver();
 	   driver.get("https://demo.midtrans.com/");
 	   driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
-	    
-	  
 	   
    }
 }

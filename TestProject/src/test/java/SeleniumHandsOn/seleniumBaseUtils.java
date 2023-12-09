@@ -113,6 +113,9 @@ public class seleniumBaseUtils {
 		return prop.getProperty(key.toString());
 	}
 
+	/**
+	 * Attach screenshots in the report on failure
+	 */
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		driver.quit();
