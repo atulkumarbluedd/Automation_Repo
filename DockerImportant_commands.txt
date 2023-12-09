@@ -1,0 +1,402 @@
+ssh-keygen -t ed25519-sk -C "atul.arya1993@gmail.com"
+docker exec -ti ch  /bin/bash
+
+*******************************************************************
+elasticSearch 
+ 
+docker run -p 9300:9300 --name elasticSearch -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+
+docker start elasticsearch
+docker logs elasticsearch
+
+docker run -p 5601:5601 --name kibana1 --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:8.11.1
+docker logs kibana90--++.,./'p'
+docker run -p 9200:9200 -p 9300:9300 --name elastic_search -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+
+gzip harry.txt
+
+ls -lart >> to show every kind of files i.e. hidden and normal files with permissions
+
+cd / >> to go to the starting directory
+
+tar cf rohan.tar rohan.txt .viminfo
+ls >> rohan.tar
+
+compress and decompress 
+gzip harry.txt 
+o.p  > harry.txt.gz
+gunzip harry.txt.gz
+o/p harry.txt
+
+ssh username@ipadress > to login into the server 
+
+vim secret.txt > this will create one new file and open in edit mode.
+now enter something and use :wq > to save the data inside the file
+:q! > to discard the changes if something you have entered wrong.
+
+scp > secure copy
+scp secret.txt root@172.105.57.88:/home >> now it will ask the password of the new server 
+then it will copy into the another server 
+
+
+*******************
+ping google.com
+netstat >> this will show the network state and what is happening > which ip is recieving the packet and what it is reciveing 
+htop >> network stats or cpu usage % usage of every process
+top >> same as htop 
+ps > to check what are processes are running 
+ps -ef to see the deatiled view of the processes
+HOW TO KILL processs
+use htop and then use the processid and use >> kill processid
+systemctl / service > basically to restart, start,  stop a service 
+sysemctl restart apache2
+
+create a user and set password
+
+useradd harry2
+passwd harry2  >  
+
+delete a user 
+userdel harry2 
+
+su harry > switch user 
+exit > exit to root user 
+
+df > to check a disk mounting status 
+du > use the disk usage 
+man du >>  to understand details about the du 
+miunt a file system 
+sudo mount /dev/sbd1 /mnt/usb
+sudo unmount /mnt/usb
+date > date is used the date
+whoami > will show the user's logged in role.
+hostname > will show computer name 
+which python > to check where pythonn is installed
+finger harry >> apt install finger > it is used to know about a perticular user >> last looged in etc.
+uname > show operating system info >> linux
+uname -a > to see the detailed info > like version etc.
+history >> it is used to check the commands that we have executed
+relative path vs absolute path >> relative path starts from current dir. and full path is absolute path.
+rename a file > mv file1 newName
+search a string in file > grep Nita csv1 ((or)) vim file1.txt now search /text_you_want_to_search ((or)) less file1.txt now search /text_you_want_to_search
+ls |tee file.txt >> put all the output of this command into the file.txt but first we should have file.txt already created
+apt install plocate 
+locate harry.txt > check the location of the file
+sort harry.txt > it will sort the data of the file and print in the console
+unique harry.txt > it will print unique values in the console as it is
+
+tail -2f harry.txt >> it will show 2 lines from tail of the file.
+head harry.txt >>  it will show some part from head of the file
+
+
+ls -a >> show all the files
+ls -al >> show hidden files
+cd .. jump just one back directory
+cd >> go to home 
+touch linode{1..10} >> will create linode1 linode2 etc 10 files
+echo "hello i am atul " > newFile.txt
+
+wq >> write and quit
+encript the file >> shred newFile.txt 
+cp file.txt ./home/apt >> copy a file into the specific directory
+mv file.txt ./home/etc >> move the file into the specific directory
+rm file.txt >> remove a file
+rm -r directoryName/
+
+if you dont have permission to run a specific command then use sudo 
+check for adduser command >>> do google 
+switch user > su atul
+exit > back to the previous user 
+
+change the password of the username >> sudo passwd nick
+sudo apt update 
+wget linkof the file to be downloaded >> 
+curl url > filename.txt
+zip newFile.zip filename.txt
+unzip newFile.zip
+less  and cat are simmilar > but less will give u page by page
+cmp file1.txt file.txt > check the diffrenece 
+diff file1.txt file2.txt >> what exactly the diff
+cat bible.txt | sort >> sort the bible 
+find  / -name "bible*" > find the file which has starting as bible 
+sudo find . -type f -name ".*" >> find all the hidden files
+find . -type f -empty >> empty directories
+find . -perm /a=x >> find all the executable files
+chmod +x exeutethis.sh >> create executable files
+chown atul file.txt >> to own the file > make the owner
+check ipaddress > ifconfig >> sudo apt install net-tool
+ipaddress >> check ipaddress
+~$ ip address | grep eth0 | grep inet | awk '{print $2}' >> check exact ip address
+cat /etc/resolv.conf >>  check dns 
+ ping -c 5 networkchuck.com >> send 5 packets only 
+ ping -c 5 -s 500 networkchuck.com > send 5 packets and max limit is 500 bytes
+ traceroute abc.com >>> provides the route of the website
+ netstat >> check open ports in the machine
+  ss -tulpin or netstat -tulpin >> check the ports switches
+  neofetch > sudo apt install neofetch >> will give u very beautifull linux details
+  ps -aux >> to get the processes
+  kill -9 process_id
+ sudo shutdown, reboot
+ shutdown -h now > shutdown machine now
+ uptime >> check when the system was up for how much time
+ free > show the system resources
+ sort -r sort.txt >> sort in decending order 
+ shutdown -h +10 >> will shutdown in 10 mins
+ whatis ls >> one line description
+ tail -n 10 file.txt >> see last 10 lines of the file.
+ *******************************************************************SSH********************************************************************************
+ ssh > secure shell > it is protocol to connect another server
+ default port for ssh client connection is 22 
+ we can change the default port and use one b/w 1024 and 32,767
+ make sure you have user is created in the another server 
+ ssh user@ip_of_theother_server
+ enter password of the user 
+
+ another way >> without password using ssh key 
+ steps 1. generate ssh key pair in local machine
+ steps 2. Copy public key to Remote machine (ssh-copy-id kali@ip_of_another_Machine) >> it will ask passowrd for one time, next time it will not ask pwd.
+ Steps 3. login to server without using password
+
+
+commands to generate key-pair
+
+ ssh-keygen
+ ssh-copy-id
+
+ifconfig to check the ip of the linux machine 
+ssh kali@ip_of_remote_machine
+*********************************************************************
+FTP > file transfer protocol
+https://youtube.com/watch?v=q37lf7lTVA4
+rpm -qa | grep vsftpd >> to check whether service is installed or not
+su -
+yum install vsftpd
+cd /etc/vsftpd/
+>> make anonymous_enable=no 
+>> make ascii_enable
+
+ftp ip_of_remote_machine
+put file.txt
+Q> how to transfer multiple files into remote machine
+mput file1 file2 
+Q> how to download file from remote server 
+A> get file.txt
+Q> diff b/w grep and egrep
+A> in egrep u can search more than one string at the same time i.e egrep "which|kanpur" file1.txt
+more is simmilar to cat command to read
+Q> check ip of linux server 
+ifconfig and ip addr
+Q> find the last or start of the files
+tail -3 file.txt or head -3 file.txt
+Q> how to check hidden files
+ls -la (or) ll
+Q> inode in linux server 
+index node of every file that is present in the directory, it is a unique identifier for every piece of metadata on a given file system >> ls -li 
+wc file.txt > lines words charcters  (word count)
+Q> delete file permanently not able to recover
+shred -u file.txt
+shred --remove file.txt
+Q> system architechture info 
+dmidecode and lscpu
+Q> combine file1 and file2 into file3 
+A> cat file1.txt file2.txt > file3.txt
+Q> check the file type
+A> file file1.txt
+Q> different type of file permissions
+> read write executable (r w x)
+q> write output of a command into the file
+A> command > filename
+Q> write something into the file without deleting the existing content inside the file (or) append into the existing file.
+A> command >> filename
+Q> redirect error into the file 
+A>   2>  (to error only)  2>&1 (for both error and output both)
+Q> how to automate any task or script
+A> using cronjob 
+crontab and at command
+Q> how to check scheduled jobs
+A> crontab -l
+* * * * * 
+minute(0-59), hour(0-23), day of the month (1-31), month(1-12), day of the week(0-6)
+Q> how to check why cron job is not executed
+A> check systemdate
+crontab entry
+check /var/log/messages
+Q> what is deamon service
+A>  service that keep on running on background
+Example : httpd, sshd, chronyd
+Q> check if service is running or not ?
+A> systemctl status service_name
+Q> check how much space a directory is taking >> du
+q> %age of usage in directory is checked by >> df -h
+Q> size of data usage in directory >> du -h
+Q> wheenever we run a programme then one unique id is generated i.e. pid
+to check if a process is running or not we use >> ps
+ps -ef | grep processid or name
+Q> kill and kill-9 diff >>kill -9 will close forcefully
+Q> check a server is accessible or not > ping or telnet
+Q> check port status >> netstat -tln
+Q> check open port in linux >> netsat -putan | grep :22
+Q> check network interface >> netstat -i or ifconfig
+Q> ssh and telnet difference >> ssh is secured but telnet is not secured
+Q> default port of ssh >> 22
+Q> what is RHEL (red hat enterprice linux operating system) it is paid and mostly used in the companies.(enterprise)
+Q> linux distrubutions > fedora, centos, ubuntu, debian, kali red hat
+Q> kernel ? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
