@@ -1,4 +1,5 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sat Dec 09 12:00:42 IST 2023","Sat Dec 09 12:00:47 IST 2023","4608","Suite","Test","SeleniumHandsOn.groupExecutions","SeleniumHandsOn.groupExecutions","LaunchChrome2","Test chrome launching with assertion failed !!",""
-"passed","Sat Dec 09 12:00:47 IST 2023","Sat Dec 09 12:00:47 IST 2023","544","Suite","Test","SeleniumHandsOn.groupExecutions","SeleniumHandsOn.groupExecutions","groupExecution","Test chrome launching",""
-"passed","Sat Dec 09 12:00:39 IST 2023","Sat Dec 09 12:00:40 IST 2023","1563","Suite","Test","SeleniumHandsOn.launchChrome","SeleniumHandsOn.launchChrome","chromeConfiguration","Test chrome launching",""
+"passed","Sat Dec 09 12:19:25 IST 2023","Sat Dec 09 12:19:25 IST 2023","400","Suite","Test","SeleniumHandsOn.groupExecutions","SeleniumHandsOn.groupExecutions","groupExecution","Test chrome launching",""
+"failed","Sat Dec 09 12:40:52 IST 2023","Sat Dec 09 12:40:54 IST 2023","2628","Suite","Test","SeleniumHandsOn.launchChrome","SeleniumHandsOn.launchChrome","LaunchChrome2","Test chrome launching with assertion failed !!",""
+"passed","Sat Dec 09 12:19:23 IST 2023","Sat Dec 09 12:19:25 IST 2023","1884","Suite","Test","SeleniumHandsOn.groupExecutions","SeleniumHandsOn.groupExecutions","LaunchChrome2","Test chrome launching with assertion failed !!",""
+"passed","Sat Dec 09 12:40:54 IST 2023","Sat Dec 09 12:40:56 IST 2023","1600","Suite","Test","SeleniumHandsOn.launchChrome","SeleniumHandsOn.launchChrome","chromeConfiguration","Test chrome launching",""

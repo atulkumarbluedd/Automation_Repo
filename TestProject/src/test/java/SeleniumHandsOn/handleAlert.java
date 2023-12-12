@@ -10,7 +10,7 @@ public class handleAlert extends seleniumBaseUtils {
 		driver.get("https://demo.guru99.com/test/delete_customer.php");
 		WebElement customerbox=driver.findElement(By.name("cusid"));
 		WebElement submit_button=driver.findElement(By.name("submit"));
-		highlightElement(customerbox);
+		 highlightElement(customerbox);
 		customerbox.sendKeys("53920");
 		highlightElement(submit_button);
 		submit_button.click();
