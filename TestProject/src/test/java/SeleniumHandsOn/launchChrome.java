@@ -31,7 +31,7 @@ public class launchChrome extends seleniumBaseUtils {
 
 	}
 
-	@Test(description = "Test chrome launching with assertion failed !!")
+	@Test(description = "Test chrome launching with assertion failed !!", groups = {"smoke"})
 	public void aLaunchChrome2() throws IOException {
 		 
 		Drivermanager.getDriver().get("https://demo.midtrans.com/");
@@ -41,7 +41,7 @@ public class launchChrome extends seleniumBaseUtils {
 
 	}
 	
-	@Test(description = "launch chrome and launch chrome browser ")
+	@Test(description = "launch chrome and launch chrome browser ", groups= {"sanity"})
 	public void launcheAmazon() {
 		Drivermanager.getDriver().get("https://amazon.com");
 		assertEquals(false, false);

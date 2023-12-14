@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import SeleniumHandsOn.Factories.Drivermanager;
 
 public class handleAlert extends seleniumBaseUtils {
-	@Test
+	@Test(description = "Test case to handle alert", groups= {"smoke"})
 	public void hanldleAlert() {
 		Drivermanager.getDriver().get("https://demo.guru99.com/test/delete_customer.php");
 		WebElement customerbox=Drivermanager.getDriver().findElement(By.name("cusid"));
