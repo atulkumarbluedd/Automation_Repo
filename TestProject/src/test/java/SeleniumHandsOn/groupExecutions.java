@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import SeleniumHandsOn.Factories.Drivermanager;
+
 public class groupExecutions extends seleniumBaseUtils {
 
 	/**
@@ -17,9 +19,9 @@ public class groupExecutions extends seleniumBaseUtils {
 	@Test(description = "Test chrome launching", groups = { "smoke" })
 	public void groupExecution() throws IOException {
 		System.out.println("Launching chrome browser");
-		driver.get("https://demo.midtrans.com/");
+		Drivermanager.getDriver().get("https://demo.midtrans.com/");
 
-		driver.manage().window().maximize();
+		Drivermanager.getDriver().manage().window().maximize();
 		Assert.assertEquals(true, true);
 
 	}
@@ -27,9 +29,9 @@ public class groupExecutions extends seleniumBaseUtils {
 	@Test(description = "Test chrome launching with assertion failed !!", groups = { "sanity" })
 	public void LaunchChrome2() throws IOException {
 		System.out.println("Launching chrome browser");
-		driver.get("https://demo.midtrans.com/");
+		Drivermanager.getDriver().get("https://demo.midtrans.com/");
 
-		driver.manage().window().maximize();
+		Drivermanager.getDriver().manage().window().maximize();
 		Assert.assertEquals(true, true);
 
 	}

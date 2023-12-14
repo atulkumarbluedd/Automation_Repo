@@ -4,49 +4,46 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.github.dockerjava.api.model.Config;
 import com.mongodb.lang.Nullable;
 
-import SeleniumHandsOn.ConfigSource.CONFIGS;
+import SeleniumHandsOn.ConfigSource.constants;
+import SeleniumHandsOn.Factories.Drivermanager;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 
 public class launchChrome extends seleniumBaseUtils {
 
-	@NotNull
-	@Nullable
+	 
 	@Test(description = "Test chrome launching", groups = { "smoke" })
-	public void chromeConfiguration() throws IOException {
-		System.out.println("Launching chrome browser");
-		driver.get(URL);
-		driver.manage().window().maximize();
+	public  void chromeConfiguration() throws IOException {
+		 
+		Drivermanager.getDriver().get(constants.getIRCTC_URL());
+		Drivermanager.getDriver().manage().window().maximize();
 		Assert.assertEquals(true, true);
 		/*
 		 * below parameter is used from command line when we use below command mvn test
 		 * -PRegression -DnameOFme="atulKumarArya"
 		 */
 		String temp = System.getProperty("nameOFme");
+		System.out.println(temp);
 
 	}
 
 	@Test(description = "Test chrome launching with assertion failed !!")
-	public void LaunchChrome2() throws IOException {
-		System.out.println("Launching chrome browser");
-		driver.get("https://demo.midtrans.com/");
+	public void aLaunchChrome2() throws IOException {
+		 
+		Drivermanager.getDriver().get("https://demo.midtrans.com/");
 
-		driver.manage().window().maximize();
-		Assert.assertEquals(true, false);
+		Drivermanager.getDriver().manage().window().maximize();
+		Assert.assertEquals(true, true);
 
 	}
 	
 	@Test(description = "launch chrome and launch chrome browser ")
-	public void lauchgoogle() {
-		
+	public void launcheAmazon() {
+		Drivermanager.getDriver().get("https://amazon.com");
+		assertEquals(false, false);
 	}
 }

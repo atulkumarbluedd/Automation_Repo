@@ -66,7 +66,7 @@ public class Listeners extends seleniumBaseUtils implements ITestListener {
 			/* below code to add screenshots in the allure report and above is used to add in extent report*/
 			
 			Allure.addAttachment("Page screenshot on failure", FileUtils.openInputStream(new File(failedScr_dstination)));
-		} catch (IOException e1) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 

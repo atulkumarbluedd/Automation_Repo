@@ -140,6 +140,26 @@
 				</pluginManagement>
 			</build>
 		</profile>
+		<profile>
+			<id>Parallel</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.2.2</version>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>TestNgsuites/group_And_parallel_execution.xml</suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		
 	</profiles>
 
 	<build>

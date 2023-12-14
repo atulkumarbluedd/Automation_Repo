@@ -5,37 +5,38 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
+import java.sql.DriverManager;
+import java.time.Duration;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.Map.Entry;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 
-import com.github.dockerjava.api.model.Config;
+import com.beust.jcommander.Parameter;
 
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 import SeleniumHandsOn.ConfigSource.constants;
 import SeleniumHandsOn.Factories.DriverFactori;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import SeleniumHandsOn.Factories.Drivermanager;
 
-public class seleniumBaseUtils {
-	static WebDriver driver;
-	static String URL = constants.URL;
+public class seleniumBaseUtils  {
+
+	 
 
 	/*
 	 * Here we are using alwaysRun is true since we wanted it to be executed every
@@ -47,10 +48,19 @@ public class seleniumBaseUtils {
 	 * 
 	 * @throws FileNotFoundException
 	 */
+	
+	private static int count=0;
 
-	@BeforeClass(alwaysRun = true)
-	public void initDriver() throws FileNotFoundException, IOException {
-		driver = DriverFactori.getDriver();
+	@BeforeMethod(alwaysRun = true)
+	public void initDriver() throws Exception {
+	   if(Objects.isNull(Drivermanager.getDriver())) {
+		WebDriver driver = DriverFactori.getDriver();
+		/* once the driver is set by the above line then in every test case whenever the driver is required use 
+		 * driver manager always.  */
+		Drivermanager.setDriver(driver);
+		Drivermanager.getDriver().manage().window().maximize();
+		Drivermanager.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(80000));
+	   }
 	}
 
 	/**
@@ -59,11 +69,12 @@ public class seleniumBaseUtils {
 	 * 
 	 * @param testCaseName
 	 * @return
-	 * @throws IOException
+	 * @throws Exception
+	 * @throws WebDriverException
 	 */
 
-	public static String getScreenShotDestination(String testCaseName) throws IOException {
-		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	public static String getScreenShotDestination(String testCaseName) throws WebDriverException, Exception {
+		File source = ((TakesScreenshot) Drivermanager.getDriver()).getScreenshotAs(OutputType.FILE);
 		String destination = System.getProperty("user.dir") + "//reports" + testCaseName + ".png";
 		FileUtils.copyFile(source, new File(destination));
 		return destination;
@@ -114,11 +125,19 @@ public class seleniumBaseUtils {
 	}
 
 	/**
-	 * Attach screenshots in the report on failure
+	 *  
 	 */
-	@AfterClass(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		driver.quit();
+		if (Objects.nonNull(Drivermanager.getDriver())) {
+			Drivermanager.getDriver().quit();
+			Drivermanager.unload();
+		}
+       count++;
+	}
+	@AfterSuite
+	public void printCount() {
+		System.out.println("count is >>>>>>>>>>>>>>>>>>>>>>>>"+ count);
 	}
 
 	/**
@@ -126,8 +145,8 @@ public class seleniumBaseUtils {
 	 * 
 	 * @param element
 	 */
-	 static void highlightElement(WebElement element) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
+	static void highlightElement(WebElement element) {
+		JavascriptExecutor jse = (JavascriptExecutor) Drivermanager.getDriver();
 		jse.executeScript("arguments[0].setAttribute('style','background:  yellow; border: 10px solid blue;');",
 				element);
 	}
