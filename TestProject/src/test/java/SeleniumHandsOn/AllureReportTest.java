@@ -3,6 +3,8 @@ package SeleniumHandsOn;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import SeleniumHandsOn.Factories.Drivermanager;
+
 public class AllureReportTest {
 	/**
 	 * to do ->> add allure testng dependency 
@@ -14,6 +16,8 @@ public class AllureReportTest {
 	 */
 	@Test(description = "Run a test and generate allure report")
 	public void allureTest() {
+		Drivermanager.getDriver().get("https://allure.com");;
+		
 		System.out.println("hello");
 		Assert.assertEquals(false, true);
 	}
