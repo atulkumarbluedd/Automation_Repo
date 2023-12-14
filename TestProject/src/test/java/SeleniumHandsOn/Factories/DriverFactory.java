@@ -1,8 +1,8 @@
 package SeleniumHandsOn.Factories;
 
 import java.net.URL;
-import java.time.Duration;
 import java.util.Objects;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,10 +12,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import SeleniumHandsOn.seleniumBaseUtils;
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 
-public class DriverFactori {
+public class DriverFactory {
 	private static WebDriver driver = null;
 
-	public static WebDriver getDriver() throws Exception {
+	public static WebDriver initDriver() throws Exception {
 
 		String browser = seleniumBaseUtils.propertyReader(CONFIGS.BROWSER_NAME);
 		String runMode = seleniumBaseUtils.propertyReader(CONFIGS.RUNMODE);

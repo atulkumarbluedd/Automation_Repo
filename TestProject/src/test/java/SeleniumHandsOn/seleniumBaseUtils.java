@@ -31,12 +31,10 @@ import com.beust.jcommander.Parameter;
 
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 import SeleniumHandsOn.ConfigSource.constants;
-import SeleniumHandsOn.Factories.DriverFactori;
+import SeleniumHandsOn.Factories.DriverFactory;
 import SeleniumHandsOn.Factories.Drivermanager;
 
-public class seleniumBaseUtils  {
-
-	 
+public class seleniumBaseUtils {
 
 	/*
 	 * Here we are using alwaysRun is true since we wanted it to be executed every
@@ -48,19 +46,21 @@ public class seleniumBaseUtils  {
 	 * 
 	 * @throws FileNotFoundException
 	 */
-	
-	private static int count=0;
+
+	private static int count = 0;
 
 	@BeforeMethod(alwaysRun = true)
-	public void initDriver() throws Exception {
-	   if(Objects.isNull(Drivermanager.getDriver())) {
-		WebDriver driver = DriverFactori.getDriver();
-		/* once the driver is set by the above line then in every test case whenever the driver is required use 
-		 * driver manager always.  */
-		Drivermanager.setDriver(driver);
-		Drivermanager.getDriver().manage().window().maximize();
-		Drivermanager.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(80000));
-	   }
+	protected void setUp() throws Exception {
+		if (Objects.isNull(Drivermanager.getDriver())) {
+			WebDriver driver = DriverFactory.initDriver();
+			/*
+			 * once the driver is set by the above line then in every test case whenever the
+			 * driver is required use driver manager always.
+			 */
+			Drivermanager.setDriver(driver);
+			Drivermanager.getDriver().manage().window().maximize();
+			Drivermanager.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(80000));
+		}
 	}
 
 	/**
@@ -109,10 +109,13 @@ public class seleniumBaseUtils  {
 	 * 
 	 * @param key
 	 * @return
+	 * @throws Exception
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static String propertyReader(CONFIGS key) {
+	public static String propertyReader(CONFIGS key) throws Exception {
+		String value = "";
+
 		String File_Path = System.getProperty("user.dir") + "\\resources\\config.properties";
 		Properties prop = new Properties();
 
@@ -121,23 +124,28 @@ public class seleniumBaseUtils  {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return prop.getProperty(key.toString());
+		value = prop.getProperty(key.toString());
+		if (value == null)
+			throw new Exception("Property name " + key + " is not found. Please check config.properties");
+		return value;
+
 	}
 
 	/**
 	 *  
 	 */
 	@AfterMethod(alwaysRun = true)
-	public void tearDown() {
+	protected void tearDown() {
 		if (Objects.nonNull(Drivermanager.getDriver())) {
 			Drivermanager.getDriver().quit();
 			Drivermanager.unload();
 		}
-       count++;
+		count++;
 	}
+
 	@AfterSuite
 	public void printCount() {
-		System.out.println("count is >>>>>>>>>>>>>>>>>>>>>>>>"+ count);
+		System.out.println("count is >>>>>>>>>>>>>>>>>>>>>>>>" + count);
 	}
 
 	/**
