@@ -11,13 +11,14 @@ import com.mongodb.lang.Nullable;
 
 import SeleniumHandsOn.ConfigSource.constants;
 import SeleniumHandsOn.Factories.Drivermanager;
+import SeleniumHandsOn.Factories.ReadPropertyFile;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 
 public class launchChrome extends seleniumBaseUtils {
 
 	 
 	@Test(description = "Test chrome launching", groups = { "smoke" })
-	public  void chromeConfiguration() throws IOException {
+	public  void chromeConfiguration() throws Exception {
 		 
 		Drivermanager.getDriver().get(constants.getIRCTC_URL());
 		Drivermanager.getDriver().manage().window().maximize();
@@ -28,6 +29,7 @@ public class launchChrome extends seleniumBaseUtils {
 		 */
 		String temp = System.getProperty("nameOFme");
 		System.out.println(temp);
+		System.out.println(ReadPropertyFile.get("BROWSER_NAME"));
 
 	}
 

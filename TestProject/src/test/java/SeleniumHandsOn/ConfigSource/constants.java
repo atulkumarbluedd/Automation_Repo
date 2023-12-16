@@ -1,7 +1,6 @@
 package SeleniumHandsOn.ConfigSource;
 
 public final class constants {
-
 	/**
 	 * private constructor is to restrict the user to create object and class is
 	 * final because we do'nt want the class to be extended by another class the
@@ -13,18 +12,21 @@ public final class constants {
 	 * environment name and run the cases
 	 */
 	private constants() {
-
 	}
 
 	private static final String GOOGLE_URL = "https://google.com";
 	private static final String IRCTC_URL = "https://www.irctc.co.in/nget/train-search";
+	private static final String CONFIG_FILE_PATH = "./Resources/config.properties";
 
 	public static String get_GOOGLE_URL() {
 		return GOOGLE_URL;
 	}
 
 	public static String getIRCTC_URL() {
-		
 		return IRCTC_URL;
+	}
+
+	public static String getCONFIG_FILE_PATH() {
+		return CONFIG_FILE_PATH;
 	}
 }

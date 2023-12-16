@@ -4,6 +4,7 @@ public class updatedSwitch {
 
 	public static void main(String[] args) {
 		System.out.println( "hjhdshdjsjhdsdhsjhds");
+		
 	}
 //	enum Day {
 //		MON, TUE, WED, THUR, FRI, SAT, SUN
