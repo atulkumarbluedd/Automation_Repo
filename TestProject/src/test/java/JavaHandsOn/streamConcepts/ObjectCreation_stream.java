@@ -2,7 +2,6 @@ package JavaHandsOn.streamConcepts;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,16 +21,9 @@ public class ObjectCreation_stream {
         // 4th way
         IntStream numsStream = Arrays.stream(new int[]{1, 2, 3, 4, 12});
         Stream<String> stream2 = Arrays.stream(new String[]{"ghg", "hhehhj"});
-
-
         List<Integer> numbers = List.of(1, 21, 32, 222);
-
-        /**
-         * find min number
-         */
+        /* Find min number*/
         Integer ans = numbers.stream().min((x, y) -> x.compareTo(y)).get();
-
-
         Integer min_number = numbers.stream().min(Integer::compareTo).get();
         System.out.println(min_number);
         // find first number
@@ -44,12 +36,9 @@ public class ObjectCreation_stream {
         System.out.println(max);
         // convert into upper case of letters
         List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
-        String uppercase=letters.stream().reduce("", (a,b)->a.toUpperCase()+b.toUpperCase());
+        String uppercase = letters.stream().reduce("", (a, b) -> a.toUpperCase() + b.toUpperCase());
         System.out.println(uppercase);
-
-
     }
-
 
 
     public static void advanceSwitch(int n) {
