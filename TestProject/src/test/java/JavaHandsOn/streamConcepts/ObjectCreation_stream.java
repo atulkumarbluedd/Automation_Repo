@@ -48,7 +48,6 @@ public class ObjectCreation_stream {
             case 3 -> System.out.println("It's a desktop!");
             case 4, 5 -> System.out.println("It's a mobile phone!");
             default -> throw new IllegalStateException(STR."Unexpected value: \{n}");
-        }
-        ;
+        };
     }
 }
