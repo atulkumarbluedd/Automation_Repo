@@ -24,7 +24,7 @@ public class DriverFactory {
 		 * or @beforeMethod or checking in the base class driver =
 		 * DriverFactori.getDriver();
 		 */
-		if (Objects.isNull(driver)) {
+		if (Objects.isNull(Drivermanager.getDriver())) {
 			if (browser.equalsIgnoreCase("chrome")) {
 				if (runMode.equalsIgnoreCase("remote")) {
 					DesiredCapabilities cap = new DesiredCapabilities();

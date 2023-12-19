@@ -10,7 +10,7 @@ public final class Drivermanager {
 	 * variables. we are choosing thread local to help in parallel execution
 	 */
 	 
-	private static ThreadLocal<WebDriver> dr = new ThreadLocal<>();
+	private static final ThreadLocal<WebDriver> dr = new ThreadLocal<>();
 
 	public static WebDriver getDriver() {
 		return dr.get();
