@@ -15,7 +15,7 @@
 		<classes>
 			<class name="SeleniumHandsOn.HughlightElement" />
 			<class name="SeleniumHandsOn.handleAlert" />
-			<class name="SeleniumHandsOn.launChrome" />
+			<class name="SeleniumHandsOn.launchChrome" />
 			<class name="SeleniumHandsOn.groupExecutions" />
 		</classes>
 

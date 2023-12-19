@@ -1,11 +1,12 @@
 package SeleniumHandsOn;
 
+import SeleniumHandsOn.Factories.seleniumBaseUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import SeleniumHandsOn.Factories.Drivermanager;
 
-public class AllureReportTest {
+public class AllureReportTest extends seleniumBaseUtils {
 	/**
 	 * to do ->> add allure testng dependency 
 	 * download allure binary and extract, and add path till bin folder in the path variables 
@@ -19,6 +20,6 @@ public class AllureReportTest {
 		Drivermanager.getDriver().get("https://allure.com");;
 		
 		System.out.println("hello");
-		Assert.assertEquals(false, true);
+        Assert.assertFalse(true);
 	}
 }

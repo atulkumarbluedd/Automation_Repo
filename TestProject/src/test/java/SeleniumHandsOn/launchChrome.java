@@ -11,7 +11,7 @@ import java.io.IOException;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 
-public class launChrome extends seleniumBaseUtils {
+public class launchChrome extends seleniumBaseUtils {
 
 	@Test(description = "Test chrome launching", groups = { "smoke" })
 	public  void chromeConfiguration() throws Exception {

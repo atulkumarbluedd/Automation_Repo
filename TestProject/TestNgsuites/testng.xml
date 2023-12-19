@@ -6,7 +6,7 @@
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="SeleniumHandsOn.launChrome" />
+			<class name="SeleniumHandsOn.launchChrome" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
