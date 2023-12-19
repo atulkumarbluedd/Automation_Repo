@@ -2,15 +2,13 @@ package SeleniumHandsOn;
 
 import static org.testng.Assert.assertEquals;
 
+import SeleniumHandsOn.Factories.seleniumBaseUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import SeleniumHandsOn.ConfigSource.constants;
 import SeleniumHandsOn.Factories.Drivermanager;
-import dev.failsafe.internal.util.Assert;
 
 public class HughlightElement extends seleniumBaseUtils {
 

@@ -35,11 +35,11 @@ public class sampleTest {
            
  
 
-//		/***
-//		 * find the floor value of square root of a number
-//		 */
-//		System.out.println(Math.floor(Math.sqrt(10)));
-//		int val = Integer.compare(4, 9);
+		/***
+		 * find the floor value of square root of a number
+		 */
+		System.out.println(Math.floor(Math.sqrt(10)));
+		int val = Integer.compare(4, 9);
 //		/**
 //		 * compare two numbers if left side number is small it gives -1 else 1 and if
 //		 * numbers are equal then gives 0

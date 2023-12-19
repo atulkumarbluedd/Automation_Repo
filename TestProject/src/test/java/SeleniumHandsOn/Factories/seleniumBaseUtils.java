@@ -1,4 +1,4 @@
-package SeleniumHandsOn;
+package SeleniumHandsOn.Factories;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,7 +75,7 @@ public class seleniumBaseUtils {
 
 	public static String getScreenShotDestination(String testCaseName) throws WebDriverException, Exception {
 		File source = ((TakesScreenshot) Drivermanager.getDriver()).getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "//reports" + testCaseName + ".png";
+		String destination = STR."\{System.getProperty("user.dir")}//reports\{testCaseName}.png";
 		FileUtils.copyFile(source, new File(destination));
 		return destination;
 
@@ -89,7 +89,7 @@ public class seleniumBaseUtils {
 	 * @throws IOException
 	 */
 	public HashMap<String, String> propertyReader() throws FileNotFoundException, IOException {
-		String File_Path = System.getProperty("user.dir") + "\\resources\\config.properties";
+		String File_Path = STR."\{System.getProperty("user.dir")}\\resources\\config.properties";
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(File_Path);
 		prop.load(fis);
@@ -116,7 +116,7 @@ public class seleniumBaseUtils {
 	public static String propertyReader(CONFIGS key) throws Exception {
 		String value = "";
 
-		String File_Path = System.getProperty("user.dir") + "\\resources\\config.properties";
+		String File_Path = STR."\{System.getProperty("user.dir")}\\resources\\config.properties";
 		Properties prop = new Properties();
 
 		try (FileInputStream fis = new FileInputStream(File_Path)) {
@@ -124,9 +124,9 @@ public class seleniumBaseUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		value = prop.getProperty(key.toString());
+		value = prop.getProperty(key.name());
 		if (value == null)
-			throw new Exception("Property name " + key + " is not found. Please check config.properties");
+			throw new Exception(STR."Property name \{key} is not found. Please check config.properties");
 		return value;
 
 	}
@@ -145,7 +145,7 @@ public class seleniumBaseUtils {
 
 	@AfterSuite
 	public void printCount() {
-		System.out.println("count is >>>>>>>>>>>>>>>>>>>>>>>>" + count);
+		System.out.println(STR."count is >>>>>>>>>>>>>>>>>>>>>>>>\{count}");
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class seleniumBaseUtils {
 	 * 
 	 * @param element
 	 */
-	static void highlightElement(WebElement element) {
+	protected static void highlightElement(WebElement element) {
 		JavascriptExecutor jse = (JavascriptExecutor) Drivermanager.getDriver();
 		jse.executeScript("arguments[0].setAttribute('style','background:  yellow; border: 10px solid blue;');",
 				element);

@@ -1,0 +1,21 @@
+String str1 = "Hello"; // Created in the String Constant Pool
+String str2 = "Hello"; // Reuses the same reference from the pool
+String Constant Pool:
+
+<<The String Constant Pool>> is a special area within the heap that stores literal strings.
+When you create a string using double quotes (e.g., String str = "Hello";), the JVM checks the String Constant Pool.
+If an identical string already exists in the pool, the existing reference is returned instead of creating a new object.
+
+<<Heap memory>>
+
+
+The Heap is a more general-purpose area of memory where objects,
+including strings created using the new keyword, are allocated.
+
+String str3 = new String("Hello"); // Created in the Heap, separate object
+String str4 = new String("Hello"); // Created in the Heap, another separate object
+
+
+Strings created with the new keyword always result in new objects in the heap,
+even if an identical string exists in the String Constant Pool.
+The String Constant Pool is managed by the JVM, and the heap is subject to garbage collection

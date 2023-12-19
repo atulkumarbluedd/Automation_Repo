@@ -1,7 +1,9 @@
 package SeleniumHandsOn;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
+import SeleniumHandsOn.Factories.seleniumBaseUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -18,7 +20,7 @@ public class handleAlert extends seleniumBaseUtils {
 		customerbox.sendKeys("53920");
 		highlightElement(submit_button);
 		submit_button.click();
-		assertEquals(false, false);
+        assertFalse(false);
 
 	}
 }

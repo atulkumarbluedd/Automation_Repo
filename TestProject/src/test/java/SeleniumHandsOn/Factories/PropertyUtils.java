@@ -6,10 +6,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
+import SeleniumHandsOn.ConfigSource.CONFIGS;
 import SeleniumHandsOn.ConfigSource.constants;
 
-public class ReadPropertyFile {
-    private ReadPropertyFile() {
+public class PropertyUtils {
+    private PropertyUtils() {
         // this is to restrict any class to create object
     }
 
@@ -19,7 +20,7 @@ public class ReadPropertyFile {
      * loading the property file takes time.
      */
 
-    private static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
     private static final Map<String, String> CONFIGMAP = new HashMap<>();
 
     static {
@@ -33,9 +34,9 @@ public class ReadPropertyFile {
         }
     }
 
-    public static String get(String key) throws Exception {
-        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key)))
+    public static String get(CONFIGS key) throws Exception {
+        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name())))
             throw new Exception(STR."property name \{key} is not found. Please check config.properties !! ");
-        return CONFIGMAP.get(key);
+        return CONFIGMAP.get(key.name());
     }
 }

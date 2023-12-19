@@ -2,16 +2,10 @@ package SeleniumHandsOn;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.Properties;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
+import SeleniumHandsOn.Factories.seleniumBaseUtils;
 import org.testng.annotations.Test;
-
-import com.mongodb.connection.Stream;
-
-import SeleniumHandsOn.ConfigSource.CONFIGS;
 
 public class ExecuteTestInDocker extends seleniumBaseUtils {
 

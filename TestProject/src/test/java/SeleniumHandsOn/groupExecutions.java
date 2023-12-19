@@ -2,6 +2,7 @@ package SeleniumHandsOn;
 
 import java.io.IOException;
 
+import SeleniumHandsOn.Factories.seleniumBaseUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

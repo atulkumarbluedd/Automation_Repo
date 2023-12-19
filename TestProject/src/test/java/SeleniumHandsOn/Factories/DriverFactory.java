@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import SeleniumHandsOn.seleniumBaseUtils;
 import SeleniumHandsOn.ConfigSource.CONFIGS;
 
 public class DriverFactory {
@@ -17,8 +16,8 @@ public class DriverFactory {
 
 	public static WebDriver initDriver() throws Exception {
 
-		String browser = seleniumBaseUtils.propertyReader(CONFIGS.BROWSER_NAME);
-		String runMode = seleniumBaseUtils.propertyReader(CONFIGS.RUNMODE);
+		String browser = PropertyUtils.get(CONFIGS.BROWSER_NAME);
+		String runMode = PropertyUtils.get(CONFIGS.RUNMODE);
 		/**
 		 * here we are checking the driver as null because some times people might use
 		 * below sentence explicitly in the test case without checking @beforeclass
@@ -30,14 +29,14 @@ public class DriverFactory {
 				if (runMode.equalsIgnoreCase("remote")) {
 					DesiredCapabilities cap = new DesiredCapabilities();
 					cap.setBrowserName(browser);
-					driver = new RemoteWebDriver(new URL(seleniumBaseUtils.propertyReader(CONFIGS.GRID_URL)), cap);
+					driver = new RemoteWebDriver(new URL(PropertyUtils.get(CONFIGS.GRID_URL)), cap);
 				} else
 					driver = new ChromeDriver();
 			} else if (browser.equalsIgnoreCase("firefox")) {
 				if (runMode.equalsIgnoreCase("remote")) {
 					DesiredCapabilities cap = new DesiredCapabilities();
 					cap.setBrowserName(browser);
-					driver = new RemoteWebDriver(new URL(seleniumBaseUtils.propertyReader(CONFIGS.GRID_URL)), cap);
+					driver = new RemoteWebDriver(new URL(PropertyUtils.get(CONFIGS.GRID_URL)), cap);
 				} else
 					driver = new FirefoxDriver();
 			}
