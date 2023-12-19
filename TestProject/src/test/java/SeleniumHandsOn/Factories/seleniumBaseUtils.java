@@ -81,59 +81,7 @@ public class seleniumBaseUtils {
 
 	}
 
-	/**
-	 * below method is used to get all the properties one time stored in the map
-	 * 
-	 * @return
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 */
-	public HashMap<String, String> propertyReader() throws FileNotFoundException, IOException {
-		String File_Path = STR."\{System.getProperty("user.dir")}\\resources\\config.properties";
-		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream(File_Path);
-		prop.load(fis);
 
-		HashMap<String, String> map = new HashMap<String, String>();
-		for (Entry<Object, Object> entry : prop.entrySet()) {
-			map.put((String) entry.getKey(), (String) entry.getValue());
-		}
-
-		return map;
-
-	}
-
-	/**
-	 * method is used to get single property of the key here we have used try with
-	 * resources so it will close automatically
-	 * 
-	 * @param key
-	 * @return
-	 * @throws Exception
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 */
-	public static String propertyReader(CONFIGS key) throws Exception {
-		String value = "";
-
-		String File_Path = STR."\{System.getProperty("user.dir")}\\resources\\config.properties";
-		Properties prop = new Properties();
-
-		try (FileInputStream fis = new FileInputStream(File_Path)) {
-			prop.load(fis);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		value = prop.getProperty(key.name());
-		if (value == null)
-			throw new Exception(STR."Property name \{key} is not found. Please check config.properties");
-		return value;
-
-	}
-
-	/**
-	 *  
-	 */
 	@AfterMethod(alwaysRun = true)
 	protected void tearDown() {
 		if (Objects.nonNull(Drivermanager.getDriver())) {
@@ -145,7 +93,7 @@ public class seleniumBaseUtils {
 
 	@AfterSuite
 	public void printCount() {
-		System.out.println(STR."count is >>>>>>>>>>>>>>>>>>>>>>>>\{count}");
+		System.out.println(STR."count is >>>>>>>>>>>>>>>>>>>>>>>> \{count}");
 	}
 
 	/**
