@@ -16,15 +16,7 @@ public class logestStringInFile extends base {
 
     @Test(description = "Longest word in the input file.")
     public void test() throws Exception {
-//	 String dir=System.getProperty("C:\\Users\\91977\\OneDrive\\Desktop\\myfile.txt");
-//	   FileReader fis= new FileReader(dir);
-//	  BufferedReader reader = new  BufferedReader(fis);
-//	  
-//	  String line;
-//	   while((line=reader.readLine())!=null) {
-//		   System.out.println(line);
-//	   }
-//	   reader.close();
+
         String longestWord = "";
         try {
             try (BufferedReader r = new BufferedReader(new FileReader("testing.txt"))) {
