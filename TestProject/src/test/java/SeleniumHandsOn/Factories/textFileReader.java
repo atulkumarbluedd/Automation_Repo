@@ -37,8 +37,9 @@ public class textFileReader {
     @Test(description = "this test is to show how this utility works !!")
     public void fileReader() throws IOException {
         textFileReaderUtil("testing.txt");
-        appendTextFile("sample.txt");
+
         textFileWriter("sample.txt");
+        appendTextFile("sample.txt");
         textFileReaderUtil("sample.txt");
     }
 }
