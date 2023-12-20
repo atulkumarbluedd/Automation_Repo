@@ -2,6 +2,7 @@ package JavaHandsOn.streamConcepts;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -9,8 +10,11 @@ import org.testng.annotations.Test;
 
 import com.google.common.base.Predicate;
 
-public class Demo {
-
+public class StreamDemo {
+	/**
+	 * This class is to just demonstrate various methods and ways to use stream
+	 * @param args
+	 */
 	public static void main(String[] args) {
 //	
 		long start=0;
@@ -75,6 +79,14 @@ public class Demo {
 		 * 
 		 */
 		data.forEach(a -> System.out.println(a)); // this will not work as stream is already used
+	}
+
+	@Test(description = "This method is to format string in a way that we wanted usig joining method")
+	public void formatStreamOutput(){
+		List<String> nums = Arrays.asList("ron", "sam", "josh", "jerry");
+		String listToString = nums.stream()
+				.collect(Collectors.joining(", ", "[", "]"));
+		System.out.println(listToString);
 	}
 
 }

@@ -11,11 +11,11 @@ import org.testng.annotations.Test;
 
 import demo.base;
 
-public class logestStringInFile extends base{
- 
- 
- @Test(description = "Longest word in the input file.")
- public void test() throws Exception{
+public class logestStringInFile extends base {
+
+
+    @Test(description = "Longest word in the input file.")
+    public void test() throws Exception {
 //	 String dir=System.getProperty("C:\\Users\\91977\\OneDrive\\Desktop\\myfile.txt");
 //	   FileReader fis= new FileReader(dir);
 //	  BufferedReader reader = new  BufferedReader(fis);
@@ -25,29 +25,24 @@ public class logestStringInFile extends base{
 //		   System.out.println(line);
 //	   }
 //	   reader.close();
-	 String  longestWord = "";
-	 try {
-		
-		 System.out.println(System.getProperty("user.dir"));
-		 BufferedReader r= new BufferedReader(new FileReader("testing.txt"));
-		try {
-			String line;
-			while((line=r.readLine())!=null) {
-				 String words[] =line.split(" ");
-				  for(String word:words) {
-					  
-					  if(longestWord .length()<word.length())
-						  longestWord =word;
-				  }
-			}
-		}
-		finally {
-			r.close();
-			System.out.println(longestWord  );
-		}
-	} catch (IOException e) {
-		e.printStackTrace();
-		 
-	}
-  }
+        String longestWord = "";
+        try {
+            try (BufferedReader r = new BufferedReader(new FileReader("testing.txt"))) {
+                String line;
+                while ((line = r.readLine()) != null) {
+                    String words[] = line.split(" ");
+                    for (String word : words) {
+
+                        if (longestWord.length() < word.length())
+                            longestWord = word;
+                    }
+                }
+            } finally {
+                System.out.println(longestWord);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
 }
