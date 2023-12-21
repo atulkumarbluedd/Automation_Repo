@@ -11,7 +11,10 @@ import java.io.FileNotFoundException;
 
 public class ExcelReader {
 
-
+    /**
+     * prerequisite >> add apacha poi  and poi-ooxml  dependecies
+     *
+     */
     public static void main(String[] args) throws FileNotFoundException {
         excelUtils();
     }

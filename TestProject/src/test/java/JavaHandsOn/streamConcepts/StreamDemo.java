@@ -1,11 +1,11 @@
 package JavaHandsOn.streamConcepts;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import groovyjarjarantlr4.runtime.tree.Tree;
 import org.testng.annotations.Test;
 
 import com.google.common.base.Predicate;
@@ -89,4 +89,90 @@ public class StreamDemo {
 		System.out.println(listToString);
 	}
 
+	@Test(description = "convert int array into list")
+	public void intArray_toList(){
+		int[] nums={3,30,34,5,9};
+//		ArrayList<Integer> list = Arrays.stream(nums).boxed().distinct().collect(Collectors.toCollection(ArrayList::new));
+//		int[] ans=Arrays.stream(nums).sorted(Comparator.reverseOrder()).toArray();
+//		System.out.println(Arrays.toString(ans));
+
+		List<Integer> ans =IntStream.of(nums).boxed() // boxed is used to convert into Integer stream
+				.sorted(Comparator.reverseOrder()).toList().stream().filter(a->a>10).toList();
+
+		System.out.println(ans);
+		List<Integer> ans1 =IntStream.of(nums).boxed() // boxed is used to convert into Integer stream
+				.sorted(Comparator.reverseOrder()).toList().stream().filter(a->a>10).toList();
+
+		String out="";
+		for (int a: ans) out+=a;
+		for(int a:ans1) out+=a;
+		System.out.println(out);
+		ArrayList<Integer> tree = new ArrayList<>();
+		for (int a: nums) {
+			if(a<10){
+				tree.add(a);
+			}
+
+
+		}
+		for(int a: nums) if(a>10){
+			int[]temp=breakintodigits(a);
+			 for(int b:temp) tree.add(b);
+		}
+//
+//		ArrayList<Integer> a =   tree.stream().sorted().collect(Collectors.toList());
+		System.out.println(tree+" tree");
+
+
+	}
+	public int[] breakintodigits(int num){
+
+		int len=String.valueOf(num).length();
+		int[] nums= new int[len];
+		int count=0;
+		 while (num>0){
+			 nums[count++]=num%10;
+
+			 num=num/10;
+		 }
+		return nums;
+	}
+
+	  @Test(description = "leetcode 179")
+	public String leetcode_179(int[] nums){
+
+		  // Convert int array to String array
+		  String[] numStrings = new String[nums.length];
+		  for (int i = 0; i < nums.length; i++) {
+			  numStrings[i] = String.valueOf(nums[i]);
+		  }
+
+		  // Sort the String array in a custom order
+		  Arrays.sort(numStrings, (a, b) -> (b + a).compareTo(a + b));
+		  System.out.println(STR."\{Arrays.toString(numStrings)} nums string");
+		  // Handle the case where the result is "00" (multiple zeros)
+		  if (numStrings[0].equals("0")) {
+			  return "0";
+		  }
+
+		  // Concatenate the sorted strings to form the largest number
+		  StringBuilder result = new StringBuilder();
+		  for (String numString : numStrings) {
+			  result.append(numString);
+		  }
+
+		  return result.toString();
+	  }
+
+	  @Test(description = "random idea to call another test from one test !! oh yeah its working omg ")
+	public void call(){
+		  int[] nums={3,30,34,5,9};
+		  System.out.println(leetcode_179(nums));
+	  }
+	  @Test
+	public void samplew(){
+		int num=310;
+
+		
+	  }
 }
