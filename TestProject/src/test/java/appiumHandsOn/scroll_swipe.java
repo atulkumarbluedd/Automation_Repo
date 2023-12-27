@@ -18,7 +18,11 @@ import java.time.Duration;
 
 public class scroll_swipe {
     static AppiumDriver driver;
-  /** actual repo  ->  https://github.com/sheetalrepo/AppiumTest/blob/master/src/test/java/demo/helper/Utils.java#L88*/
+
+    /**
+     * actual repo  ->  https://github.com/sheetalrepo/AppiumTest/blob/master/src/test/java/demo/helper/Utils.java#L88
+     */
+     /* this method is same as longPress method*/
     protected static void swipe(Point start, Point end, Duration duration) {
         PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence swipe = new Sequence(input, 0);
@@ -47,40 +51,40 @@ public class scroll_swipe {
      * M                N
      *        B
      */
-    public static void scroll(String pageDirection, double scrollRatio){
+    public static void scroll(String pageDirection, double scrollRatio) {
         Duration SCROLL_DUR = Duration.ofMillis(300);
         if (scrollRatio < 0 || scrollRatio > 1) {
             throw new Error("Scroll distance must be between 0 and 1");
         }
 
         Dimension size = driver.manage().window().getSize();
-        System.out.println("Screen Size = "+size);
+        System.out.println("Screen Size = " + size);
         System.out.println("");
 
-        Point midPoint = new Point((int)(size.width * 0.5),(int)(size.height * 0.5));
+        Point midPoint = new Point((int) (size.width * 0.5), (int) (size.height * 0.5));
 
         /* below a and b are not required this is just to get the idea*/
-        int a = (int)(midPoint.x * scrollRatio);
-        int b = (int)(midPoint.y * scrollRatio);
+        int a = (int) (midPoint.x * scrollRatio);
+        int b = (int) (midPoint.y * scrollRatio);
 
-        int bottom = midPoint.y + (int)(midPoint.y * scrollRatio); // 50 + 25        B
-        int top = midPoint.y - (int)(midPoint.y * scrollRatio); // 50 - 25           A
-        int left = midPoint.x - (int)(midPoint.x * scrollRatio); // 25 - 12.5         M
-        int right = midPoint.x + (int)(midPoint.x * scrollRatio); // 25 + 12.5        N
+        int bottom = midPoint.y + (int) (midPoint.y * scrollRatio); // 50 + 25        B
+        int top = midPoint.y - (int) (midPoint.y * scrollRatio); // 50 - 25           A
+        int left = midPoint.x - (int) (midPoint.x * scrollRatio); // 25 - 12.5         M
+        int right = midPoint.x + (int) (midPoint.x * scrollRatio); // 25 + 12.5        N
 
-        System.out.println("Midpoint: "+ midPoint);
+        System.out.println("Midpoint: " + midPoint);
 
-        System.out.println("Midpoint x: "+ midPoint.x);
-        System.out.println("a: "+ a);
+        System.out.println("Midpoint x: " + midPoint.x);
+        System.out.println("a: " + a);
 
-        System.out.println("Midpoint y: "+ midPoint.y);
-        System.out.println("b: "+ b);
+        System.out.println("Midpoint y: " + midPoint.y);
+        System.out.println("b: " + b);
 
         System.out.println("");
-        System.out.println("Bottom: "+ bottom);
-        System.out.println("Top: "+ top);
-        System.out.println("Right: "+ right);
-        System.out.println("Left: "+ left);
+        System.out.println("Bottom: " + bottom);
+        System.out.println("Top: " + top);
+        System.out.println("Right: " + right);
+        System.out.println("Left: " + left);
         System.out.println("--------------------");
 
         if (pageDirection == "UP") {
