@@ -22,7 +22,7 @@ public class scroll_swipe {
     /**
      * actual repo  ->  https://github.com/sheetalrepo/AppiumTest/blob/master/src/test/java/demo/helper/Utils.java#L88
      */
-     /* this method is same as longPress method*/
+     /* this method is same as longPress method only here we have to provide start and end point*/
     protected static void swipe(Point start, Point end, Duration duration) {
         PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence swipe = new Sequence(input, 0);
