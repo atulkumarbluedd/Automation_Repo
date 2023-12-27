@@ -1,0 +1,34 @@
+
+In Java, the synchronized keyword is used to control access to critical sections of code or methods,
+and it is not directly applied to classes as a whole. However, you can use the synchronized
+keyword with methods and code blocks within a class to achieve synchronization.
+Here are two common ways to achieve synchronization within a class:
+
+Note >> class can not be syncronized.
+only two ways as shown below
+
+
+>> Synchronized Methods:
+>> Synchronized Blocks:
+
+using syncronized block
+
+public class MyClass {
+    private Object lockObject = new Object();
+
+    public void someMethod() {
+        // Non-critical code
+
+        synchronized (lockObject) {
+            // Critical section of code
+        }
+
+        // Non-critical code
+    }
+}
+
+2nd way >> using syncronized method
+
+ public synchronized void synchronizedMethod() {
+        // Critical section of code
+    }

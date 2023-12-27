@@ -1,9 +1,12 @@
 package com.coco.Tests;
 
+import org.testng.annotations.Test;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class sample {
 	public static void main(String[] args) {
@@ -31,4 +34,22 @@ public class sample {
 		System.out.println(len);
 
 	}
+	@Test
+	public void printPrime(){
+		IntStream.range(2,20).forEach(System.out::println);
+		int num=15;
+		while (num!=0){
+			boolean flag=false;
+
+			for(int i=2;i<=(int)Math.sqrt(num);i++){
+				if(num%i==0) {
+					flag=true;
+					break;
+				}
+			}
+//			if(!flag) System.out.println(STR."number is prime \{num}");
+			num--;
+		}
+	}
+
 }

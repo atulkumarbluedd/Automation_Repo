@@ -25,12 +25,66 @@ import io.appium.java_client.remote.AutomationName;
 
 public class AppiumUtilities {
 
+	/** commands ->  npm i -g appium@next
+	 * this command is used to download appium server Note that in appium 2.0 there is no separate UI just run on the cmd
+	 * for 1.0 we have to set the main.js path
+	 * and for 2.0 we have to set lib path
+	 * to install UIAutomator 2
+	 * >> appium driver install uiAutomator2
+	 * >> appium driver list
+	 * >> appium driver list --updates | to update install drivers
+	 * we can use appium inspector using UI -->  or we can download physically.
+	 * make sure you have set-up these paths.
+	 * sdk/platform sdk/platformTools sdk/tools sdk/build-tools
+	 *  in appium 2.0 wd/hub is not required
+	 *  an image has is attched in this folder which is required to start appium inspector
+	 *  how to get app package and app activity in appium 2.0 >>
+	 *  below command we have to use after launching the app in emulator
+	 *  >>> adb shell dumpsys window windows | grep mFocusedApp
+	 *  to check android build version for the app using command
+	 *  >>> adb shell getprop ro.build.version.release >> this is platformVersion
+	 *  Here we have to use appiumby or BY(from selenium) instead of androidby which is deprecated
+	 *  content-desc -> if you have this tag then you can use accessibily-id.
+	 *   resource-id -> if you have this tag then you can use id. i.e AppiumBy.id("");
+	 *   we can chain as well while feeding capabilities
+	 *   i.e. options.setPlatformName("Android")
+	 *                .setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2)
+	 *   *****************************basically set below capabilities ************************
+	 *   platformName -> android
+	 *   platformVersion -> android version
+	 *   automationName -> uiAutomator2
+	 *   deviceNmae -> emulator2323
+	 *   appPackage ->
+	 *   appActivity ->
+	 *   app -> path
+	 *   Noreset -> false --> this will not install app again if it is installed already
+	 *
+	 *   ****************for anddroid chrome caps ****************
+	 *   platformName
+	 *   platformVersion
+	 *   AutomationName
+	 *   DeviceName
+	 *   BrowserName
+	 *
+	 *
+	 *  using and or xpath
+	 *  //*[@id='123' or @name='skklk']
+	 *  // *[@id='123' and @name='skklk']
+	 *
+	 *  ******************  dependencies req. *********************
+	 *
+	 *  > java client
+	 *  > selenium support
+	 *  > selenium if req.
+	 *
+	 *
+	 * */
 	@Test
 	void androidLaunchTest() throws MalformedURLException, InterruptedException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/Android-MyDemoAppRN.1.3.0.build-244.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
@@ -46,12 +100,12 @@ public class AppiumUtilities {
 		// Assertion
 	}
 
-	@Test
+	@Test(description = "java client 8 is used here !! ")
 	void tap() throws MalformedURLException, InterruptedException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/Android-MyDemoAppRN.1.3.0.build-244.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
@@ -60,12 +114,12 @@ public class AppiumUtilities {
 		// Assertion
 	}
 
-	@Test
+	@Test(description = "java client 8 is used here !! ")
 	void doubleTap() throws MalformedURLException, InterruptedException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/Android-MyDemoAppRN.1.3.0.build-244.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
@@ -74,12 +128,12 @@ public class AppiumUtilities {
 		// Assertion
 	}
 
-	@Test
+	@Test(description = "java client 8 is used here !! ")
 	void zoom() throws MalformedURLException, InterruptedException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/Android-MyDemoAppRN.1.3.0.build-244.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
@@ -111,12 +165,12 @@ public class AppiumUtilities {
 		// Assertion
 	}
 
-	@Test
+	@Test(description = "java client 8 is used here !! ")
 	void longPress() throws MalformedURLException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/ApiDemos-debug.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
@@ -134,7 +188,7 @@ public class AppiumUtilities {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
-		options.setDeviceName("amuthan-test-device");
+		options.setDeviceName("atul-test-device");
 		options.setApp(System.getProperty("user.dir") + "/apps/ApiDemos-debug.apk");
 
 		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);

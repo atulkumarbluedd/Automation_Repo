@@ -12,10 +12,12 @@ public class BuyNowTests {
    @Test(description = "Happy Flow")
    
    public void buyNowHappyFlow() throws InterruptedException {
-	    
+//
 	   WebDriver driver = new FirefoxDriver();
 	   driver.get("https://demo.midtrans.com/");
 	   driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
-	   
+       /* usage of supplier */
+	     Supplier<String> messageSupplier=()->"s";
+	   System.out.println(messageSupplier.get());
    }
 }
