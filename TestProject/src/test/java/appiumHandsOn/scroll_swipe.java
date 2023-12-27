@@ -59,6 +59,7 @@ public class scroll_swipe {
 
         Point midPoint = new Point((int)(size.width * 0.5),(int)(size.height * 0.5));
 
+        /* below a and b are not required this is just to get the idea*/
         int a = (int)(midPoint.x * scrollRatio);
         int b = (int)(midPoint.y * scrollRatio);
 
