@@ -12,6 +12,7 @@ public class JsonReader_jackson {
     public void jsonReader() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File("./Resources/newFile.json");
+        /* here we are deserialization of Person Object*/
         // Read json data from a file and map into Person.class file
         Person person = mapper.readValue(file, Person.class);
 
