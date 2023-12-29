@@ -54,10 +54,9 @@ public class DoublyLinkedList {
 	}
 
 	/**
-	 * This method is used to insert node at the end of the existing linkedlist
-	 * 
-	 * @param data
-	 */
+	 * This method is used to insert node at the end of the existing linked list
+	 *
+     */
 	public void addNodeLast(int data) {
 		Node node = new Node(data);
 		Node temp = head;
@@ -71,9 +70,8 @@ public class DoublyLinkedList {
 
 	/**
 	 * add node at specific place in b/w linkedlist
-	 * 
-	 * @param data
-	 */
+	 *
+     */
 	public void addNodeBetween(int place, int nodeTobeAdded) {
 		Node curr = head;
 		Node newNode = new Node(nodeTobeAdded);

@@ -1,6 +1,8 @@
 package com.coco.Tests;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 import org.openqa.selenium.WebDriver;
@@ -13,11 +15,9 @@ public class BuyNowTests {
    
    public void buyNowHappyFlow() throws InterruptedException {
 //
-	   WebDriver driver = new FirefoxDriver();
-	   driver.get("https://demo.midtrans.com/");
-	   driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
-       /* usage of supplier */
-	     Supplier<String> messageSupplier=()->"s";
-	   System.out.println(messageSupplier.get());
+//
+	     Supplier<List<String>> messageSupplier=()->List.of("same","ron");
+	   List<String> s=messageSupplier.get();
+	   System.out.println(s);
    }
 }

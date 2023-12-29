@@ -9,9 +9,8 @@ import java.io.IOException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import demo.base;
 
-public class logestStringInFile extends base {
+public class logestStringInFile   {
 
 
     @Test(description = "Longest word in the input file.")

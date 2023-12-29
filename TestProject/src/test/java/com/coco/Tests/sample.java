@@ -34,7 +34,7 @@ public class sample {
 		System.out.println(len);
 
 	}
-	@Test
+	@Test(description = "this test is to print prime numbers from 2 to 20 !!")
 	public void printPrime(){
 		IntStream.range(2,20).forEach(System.out::println);
 		int num=15;

@@ -1,0 +1,40 @@
+
+202 - accepted - it is used in batch processing, means req is received but not completed yet.
+204 - no content i.e. when you want to delete one resource from db then you will get this response (The server has fulfilled the request but does not need to return a response body. The server may return the updated meta information.)
+
+3xx - Redirection codes
+
+300 - multiple choices - suppose you landed up in a website there it is asking in which lang u want the website
+301 - moved permanently - the website is moved permanently and the new link is given in the response's location header.
+302 - Found -
+303 - see other -
+304 - not modified - indicates that the requested resource's response is not modified so u can use cached version of the req. this is to use faster page delivery.
+307 - temporarily redirect - basically it is used when the resource is available in diff location temporarily. used during server maintenance.
+302 & 307 are same only diff is that in case of 307 same http method will be used which was used in previous req.
+308 - permanent redirect - the resource is moved permanently same as 301 but here same http method is used same as previous one.
+
+4XX - client error
+
+400 - Bad Request -
+401 - unauthorized - (invalid access token)
+404 - not found - enter something wrong in the req header
+405 - method not allowed -
+406 - not applicable -
+409 - conflict -
+415 - unsupported media type - The server is refusing to service the request because the payload is in a format not supported by this method.
+429 - too many requests - The request was rejected due to rate limitations. The number of requests exceeded the limit in a given time.
+444 - no response - server returns no info to the client and closes the connection.
+499 - client closed req. - The server is processing the req but the connection is closed by the client, making the server unable process this request,
+
+5XX - server error
+
+500 - internal server error -
+501 - not implemented -
+502 - Bad gateway -
+503 - Service unavailable - server is down or server is not ready to handle the req.
+504 - Gateway timeout - The server is acting as a gateway and not received the response in time for a req.
+505- http version not supported - The http version used is not supported by server
+508 - Loop detected -
+510 - Not Extended - Further extension of the req required for the server to fulfill the request.
+511 - Indicates client need to authenticate to gain the server access
+

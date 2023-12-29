@@ -19,3 +19,6 @@ String str4 = new String("Hello"); // Created in the Heap, another separate obje
 Strings created with the new keyword always result in new objects in the heap,
 even if an identical string exists in the String Constant Pool.
 The String Constant Pool is managed by the JVM, and the heap is subject to garbage collection
+
+// string famous problems
+longest string without repeating chars

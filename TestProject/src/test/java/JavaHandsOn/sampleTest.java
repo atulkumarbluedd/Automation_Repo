@@ -1,5 +1,7 @@
 package JavaHandsOn;
 
+import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertEquals;
 
 import java.util.Base64;
@@ -62,5 +64,35 @@ public class sampleTest {
 //		String ss=String.valueOf(j);
 
 	}
+
+	@Test
+	public String sampletest(String input){
+		char[] charr=input.toCharArray();
+		int left=0;
+		int right=input.length()-1;
+		while(left<=right){
+			if(charr[left]!=' ')
+			{
+				char temp=charr[right];
+				charr[right]=charr[left];
+				charr[left]=temp;
+				left++;
+				right--;
+			}
+			else if(input.charAt(left)==' ') left++;
+			else if(input.charAt(right)==' ') right--;
+		}
+		return new String(charr);
+	}
+
+	@Test(description = "reverse string ignore space")
+	public void sampleSa(){
+		String s=sampletest(" Hi There");
+		System.out.println(s);
+		System.out.println(
+				s.equals(" er ehTiH")
+		);
+	}
+
 
 }
