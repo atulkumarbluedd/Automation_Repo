@@ -1,4 +1,4 @@
-package ApiAutomationHandsOn.PoJO;
+package RestAssuredHandsOn.PoJO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

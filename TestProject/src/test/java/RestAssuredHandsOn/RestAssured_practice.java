@@ -1,13 +1,10 @@
-package ApiAutomationHandsOn;
+package RestAssuredHandsOn;
 
-import ApiAutomationHandsOn.PoJO.Data;
-import ApiAutomationHandsOn.PoJO.Response;
-import ApiAutomationHandsOn.PoJO.Response1;
-import ApiAutomationHandsOn.PoJO.Support;
+import RestAssuredHandsOn.PoJO.Data;
+import RestAssuredHandsOn.PoJO.Response;
+import RestAssuredHandsOn.PoJO.Response1;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 public class RestAssured_practice {
 

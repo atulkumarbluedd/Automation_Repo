@@ -1,4 +1,4 @@
-package ApiAutomationHandsOn.PoJO;
+package RestAssuredHandsOn.PoJO;
 
 public interface test {
 
