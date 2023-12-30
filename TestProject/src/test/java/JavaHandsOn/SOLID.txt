@@ -1,0 +1,56 @@
+SOLID
+https://www.javatpoint.com/solid-principles-java > link to learn in detail
+S - single responsibility principle - every Java class must perform a single functionality Implementation of multiple functionalities in a single class mashup the code and if any modification is required may affect the whole class.
+O - the module should be open for extension and close for modification, The extension allows us to implement new functionality to the module
+Example suppose one class vehicleInfo which has method vehicleNumber and  which have subclass car which has overidden this method suppose new Truck class came then it can
+return the vehicle number by just overriding the vehicleinfo class so it is open for extension and closed for modification.
+
+
+L - Liskov substitution Principle - if class A is a subtype of class B, then we should be able to replace B with A without interrupting the behavior of the program.
+
+I- Interface segregation principle - The principle states that the larger interfaces split into smaller ones.
+Because the implementation classes use only the methods that are required. We should not force the client to use the methods that they do not want to use. basically create seperate interface for seperate task.
+
+D - Dependency inversion Principle - The principle states that we must use abstraction (abstract classes and interfaces) instead of concrete implementations.
+High-level modules should not depend on the low-level module but both should depend on the abstraction.
+Because the abstraction does not depend on detail but the detail depends on abstraction. and classes should be loosely coupled
+
+
+Why should we use SOLID principles?
+It reduces the dependencies so that a block of code can be changed without affecting the other code blocks.
+The principles intended to make design easier, understandable.
+By using the principles, the system is maintainable, testable, scalable, and reusable.
+It avoids the bad design of the software.
+
+
+**********************************************************************************************************
+L - Liskov substitution Principle
+
+
+public class Student
+{
+private double height;
+private double weight;
+public void setHeight(double h)
+{
+height = h;
+}
+public void setWeight(double w)
+{
+weight= w;
+}
+...
+}
+public class StudentBMI extends Student
+{
+public void setHeight(double h)
+{
+super.setHeight(h);
+super.setWeight(w);
+}
+public void setWeight(double h)
+{
+super.setHeight(h);
+super.setWeight(w);
+}
+}
