@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -27,8 +28,12 @@ public class RestAssured_practice {
     public void deserialization() {
         RestAssured.baseURI = "https://reqres.in/";
         Response1 responseObject = RestAssured.given().pathParams("page", "2")
-                .when().get("/api/users/{page}").as(Response1.class);
+                .when().get("/api/users/{page}").getBody().
+                // here we can use get body or without get body both will work
+                as(Response1.class);
         System.out.println(responseObject.getSupport().getText());
+        String expected="To keep ReqRes free, contributions towards server costs are appreciated!";
+        Assert.assertEquals(responseObject.getSupport().getText().trim()/*Actual*/,expected /*expected*/);
     }
 
     @Test(description = "this test is to deserialize data into multiple simmilar type of objects !!")
