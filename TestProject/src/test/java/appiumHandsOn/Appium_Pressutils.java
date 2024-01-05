@@ -1,6 +1,6 @@
 package appiumHandsOn;
 
-import com.coco.Tests.sample;
+
 import com.google.common.collect.ImmutableList;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -30,9 +30,9 @@ public class Appium_Pressutils {
      */
     public static void main(String[] args) {
         /* another way of providing path of the apk */
-        ClassLoader loader = sample.class.getClassLoader();
-        File file = new File(loader.getResource("path_of_apk_File").getFile());
-        String apkPath = file.getAbsolutePath();
+//        ClassLoader loader = sample.class.getClassLoader();
+//        File file = new File(loader.getResource("path_of_apk_File").getFile());
+//        String apkPath = file.getAbsolutePath();
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("Android")
                 .setPlatformVersion("8.1")
@@ -43,7 +43,7 @@ public class Appium_Pressutils {
                 .setAppPackage("lklsdlsj")
                 .setAppActivity("hshhdsaj")
 
-                .setApp(apkPath)
+                .setApp("apk path")
                 .setNoReset(false);
 
 

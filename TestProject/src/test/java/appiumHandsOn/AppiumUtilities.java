@@ -165,8 +165,8 @@ public class AppiumUtilities {
 		// Assertion
 	}
 
-	@Test(description = "java client 8 is used here !! ")
-	void longPress() throws MalformedURLException {
+	@Test(description = "using Actions class !! ")
+	void longPress_using_Actions_class() throws MalformedURLException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional
@@ -184,7 +184,7 @@ public class AppiumUtilities {
 	}
 
 	@Test
-	void swipeOrScroll() throws MalformedURLException {
+	void swipeOrScroll_using_java_client() throws MalformedURLException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setPlatformName("Android"); // optional
 		options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);// optional

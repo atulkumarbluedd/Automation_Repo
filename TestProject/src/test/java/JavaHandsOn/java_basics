@@ -1,0 +1,86 @@
+inteface
+> an interface can have n number of default methods where we can provide implementation
+> and no need by the subclass to override these default methods and they can directly called by interface name dot default method name
+> functional interface it is used to reduce the code lines and more readability and SAM followed
+
+vatious collection diffs
+
+
+list
+> arraylist
+>linkedlist
+>vector(class) legacy
+>stack
+
+
+
+__________________________________________________________________________________________________________________
+set
+
+hashSet implements set
+linkedhashset
+
+
+-- sorted set(I) extends set
+treeset extends sorted set
+
+
+__________________________________________________________________________________________________________________
+queeue --> priorityQueue
+deque(I) <<implements>> ll
+ArrayDeque extends ll and deque
+
+
+__________________________________________________________________________________________________________________
+
+map
+
+hashmap
+linkedhashmap
+
+sortedmap(I)
+treemap (c)
+
+
+hashSet vs TreeSet
+1. search, insert and delete hashset is faster than treeset
+2.treeset takes 0(logn) for search, insert and delete
+3. but treeset stores data in sorted manner
+4. treeset is implemented using self balanced binary search tree, but hashset is impemented using hashtable
+5. treeset has methods like first and last headset tailset etc.
+6. hashset allows null but treeset does not allows
+
+Arraylist vs linkedlist
+https://www.geeksforgeeks.org/arraylist-vs-linkedlist-java/
+ 1. al uses dynamic arrays but ll uses doubly ll
+ 2. manupulation in al takes more time as shifting happens but in ll simply link is broked and new link generated without shifting
+ 3. insert operation is slow ll is fast
+ 4. al is best for stroing and accessing, ll is good for manupulating the data
+ 5. as al uses indxs so it is good for stroing and getting
+ 6. delete is not good , delete is good
+ 7.
+
+hashset vs linkedhashset
+https://www.javatpoint.com/hashset-vs-linkedhashset-in-java#:~:text=HashSet%20is%20an%20unordered%20%26%20unsorted,insertion%20order%20of%20the%20elements.
+1. hset is unordred vs linkedhashset is ordered
+2. hset no insertion order is maintained but llhset maintains insertion order
+3. linkedhashset uses hashtable and doubly linked list both but hset only uses hashtable
+4. one null allowed in both
+5. hset requires less memory but lhset requires more memory
+6. hset is fast but lhset is slow
+7. both are not syncroniszed
+8. o(1) for insert retrieval, removal
+
+
+https://www.tutorialspoint.com/Difference-between-TreeMap-HashMap-and-LinkedHashMap-in-Java
+
+hashmap treemap linkedhashmap
+> treemap does not allow null key but can have null mutiple values
+treemap stores in sorted key fashion
+linkedhashmap stores in same order
+
+hashtable vs hashmap
+sycronized || not
+thread safe || not
+no null key || one null key
+faster || slower

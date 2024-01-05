@@ -1,4 +1,4 @@
-package JavaHandsOn;
+package JavaHandsOn.Design;
 
 public class DoublyLinkedList {
 

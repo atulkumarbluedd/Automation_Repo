@@ -62,10 +62,16 @@ public class scroll_swipe {
         System.out.println("");
 
         Point midPoint = new Point((int) (size.width * 0.5), (int) (size.height * 0.5));
+        int a = 0;
+        int b = 0;
 
-        /* below a and b are not required this is just to get the idea*/
-        int a = (int) (midPoint.x * scrollRatio);
-        int b = (int) (midPoint.y * scrollRatio);
+        try {
+            /* below a and b are not required this is just to get the idea*/
+            a = (int) (midPoint.x * scrollRatio);
+            b = (int) (midPoint.y * scrollRatio);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         int bottom = midPoint.y + (int) (midPoint.y * scrollRatio); // 50 + 25        B
         int top = midPoint.y - (int) (midPoint.y * scrollRatio); // 50 - 25           A

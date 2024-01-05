@@ -1,0 +1,29 @@
+appium plugin install <installationKey>
+appium plugin list --installed >> list the plugins installed
+ "appium --use-plugins=element-wait" > to use plugin
+ appium plugin install --source=npm appium-wait-plugin >> this is used to install wait plugin
+1. ios platformname is not required it wil take bydefault
+2. xcuitestoptions for ios and uiAutomator2Options for android
+3. device name and app these 2  only we have to provide which is mendatory
+4. then use androidDriver and iosDriver only we have to use
+5. And this is w3c protocol it is using instead of json wire protocol
+
+ in the appium inspector is used for automating android and ios both
+as it is w3c capabilities so we have to provide appium colon
+appium:deviceName:""
+appium:platformName:""
+> simply change the platform name as ios and automationName as "uiAutomator2"
+ and it will work for ios as appium inspector
+
+capabilities >>
+
+deviceName
+platformName
+app >> .zip
+automationName: "XCUItest" or "UIAutomator2"
+
+if you want to use web version of inspector then use like below
+appium --allow-cors
+inspector.appiumpro.com >> ui version of appium inspector
+
+

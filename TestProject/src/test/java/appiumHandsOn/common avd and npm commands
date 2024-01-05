@@ -1,0 +1,91 @@
+> adb logcat >display device logs in real time
+>  adb -s <device_serial_number> install <path/to/app.apk> "when we have multiple devices present.
+> adb devices
+> adb shell > open a shell in the device
+> adb uninstall
+> adb push <local> <remote> "copy file from locat to remote system"
+> adb pull <remote> <local>
+> adb reboot
+> adb reboot recovery > reboot the device into the recovery mode
+> adb reboot bootloader > reboot the device into the bootloader/fastboot mode
+> adb forward <local> <remote> : Forwards socket connections from a specified local port to a specified remote port.
+> adb reverse <remote> <local>
+> adb shell am start -n <package_name>/<activity_name>
+start an activty on the device
+> adb shell pm list packages >  list all the packages installed
+> adb shell pm clear <package_name> : clear data for a specified package
+> adb shell screenrecord <filename.mp4> : record screen and save into specific folder
+> adb devices -l : list connected devices with additional details
+
+******************************* NPM ************************************************************************
+> npm install -g appium
+> npm install -g appium@<version_number>
+> appium
+> appium -p 4725 >>> start appium on specific port
+
+> adb > android debug bridge
+
+for ios commands to check devices
+xcrun instruments -s devices >> list of ios devices
+
+***********************************************************************************************************
+brew install libimobiledevice and then run idevice_id -l command to check the list of devices
+
+Q> Appium architechture
+Q> how adb works internally ?
+ANS : >>
+ADB (Android Debug Bridge) works as a client-server architecture. Here's a simplified overview of how ADB works internally:
+
+1. Client-Server Communication:
+
+Server Side: The ADB server runs on your computer. It is responsible for managing communication between the client (the ADB command-line tool on your computer) and the daemon on the device.
+Client Side: The ADB command-line tool (adb) is used to interact with the ADB server. When you run an ADB command, the client sends the command to the server.
+2. ADB Daemon on the Device:
+
+On the Android device, an ADB daemon runs in the background. The daemon is responsible for executing commands sent from the ADB server and managing communication with the device.
+Connection Establishment:
+
+When you connect an Android device to your computer using a USB cable, the ADB server on your computer checks for attached devices.
+If an Android device is detected, the ADB server starts communicating with the ADB daemon on the device.
+Authentication:
+
+ADB uses a simple authentication mechanism between the client and the daemon to ensure secure communication. The first time you connect a device, the ADB server generates a key pair. The public key is stored on the device, and the private key is stored on the computer. This key pair is used to authenticate subsequent connections.
+Command Execution:
+
+When you run an ADB command (e.g., adb devices), the ADB client sends the command to the ADB server.
+The ADB server forwards the command to the ADB daemon on the connected device.
+USB Communication:
+
+ADB communicates with the device over USB. It uses the Android Debugging Protocol (ADP) for communication between the client and the daemon.
+The ADB daemon on the device can execute various commands, such as installing apps, transferring files, and interacting with the device's shell.
+ADB Shell:
+
+One powerful feature of ADB is the ability to open a shell on the device. This allows you to interact with the device's command-line interface directly.
+Data Transfer:
+
+ADB can be used to transfer files between your computer and the Android device. The adb push and adb pull commands facilitate this data transfer.
+Emulator Support:
+
+ADB also supports communication with Android emulators. When you run an emulator, it essentially behaves like a connected physical device as far as ADB is concerned.
+In summary, ADB provides a bridge between your computer and an Android device, allowing you to execute various commands, transfer files, and interact with the device's shell for debugging and development purposes. The communication is facilitated by a client-server architecture and a secure authentication mechanism
+
+
+appium architecture
+cleint server architecture >> json wire protocol or w3c protocol
+>  request will be sent to appium server > client means java code will sent the desired capabilities
+
+                          (behave like a driver)          facebook developed
+[client] --> [server] ----> xcuiTest-- --- --- --->    [webdriver Agent] ---->  app/simulator/emulator
+
+
+
+various gesture in appium
+
+1.Tap on an element.
+2. Tap on x, y coordinates.
+3. Press an element for a particular duration.
+4. Press x, y coordinates for a particular duration.
+5. Horizontal swipe: Using start and end percentage of the screen height and width.
+6. Vertical swipe: Using start and end percentage of the screen height and width.
+7. Drag(Swipe) one element to another element.
+8. Multitouch for an element.

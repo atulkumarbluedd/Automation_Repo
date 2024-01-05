@@ -16,6 +16,13 @@ High-level modules should not depend on the low-level module but both should dep
 Because the abstraction does not depend on detail but the detail depends on abstraction. and classes should be loosely coupled
 
 
+or
+
+
+"Dependency Inversion is the strategy of depending upon interfaces or
+abstract functions and classes rather than upon concrete functions and classes"
+ "Simply put, when components of our system have dependencies, we don't want directly inject a component's dependency into another"
+
 Why should we use SOLID principles?
 It reduces the dependencies so that a block of code can be changed without affecting the other code blocks.
 The principles intended to make design easier, understandable.

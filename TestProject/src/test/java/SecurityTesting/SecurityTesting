@@ -1,0 +1,109 @@
+The below are the different contents that will be covered in this Training Sessions:
+
+Introduction to Security Testing
+Importance of Security Testing
+Future of Security Testing
+Security Testing Jobs and Packages
+Basics
+CIA Triad
+HTTP Methods
+HTTP Response Code
+Http Headers
+Cookie Versus Session
+Cryptography
+Encryption
+Encoding
+Hashing
+Symmetric Key Algorithm
+Asymmetric Key Algorithm
+Input Validation
+Output Encoding
+Black List Validation
+Whitelist Validation
+Client Side Validation
+Server Side Validation
+Advanced Concepts
+SDLC and Threat Modelling
+SSL Handshaking Process
+SSL Versus TLS
+SSL/TLS Version
+Security Testing process/ Methodology
+Vulnerabilities
+SQL Injection
+Cross Site Scripting
+Cross Site Request Forgery
+Insecure Direct Object Reference
+Failure to request URL Access
+Security Misconfiguration
+Unvalidated Redirects and Forwards
+Broken Authentication and Session Management
+Using components with known Vulnerabilities
+Sensitive Data Exposure
+XML External Entity
+Insecure Logging and Storage
+Insecure Communication
+Vulnerable SSL/TLS Versions
+Other things
+Authentication related tests
+Insecure Communication
+User Enumeration
+Default or guessable User Account
+Brute Force
+Bypassing Authentication Schema
+Vulnerable Password and Password Reset
+Authorization Related Tests
+Path Traversals
+Bypassing Authorization Schema
+Privilege Escalation
+Session Management Testing
+Session Hijacking
+Session Fixation
+Session Timeout
+Session Replay
+Session Invalidation
+Exposed Session Variables
+Configuration Related Tests
+Missing Http Only and Secure Flags
+Clickjacking
+HTTP Strict Transport Security Header
+Browser Cache Weakness
+Unsafe CORS Policy - HTML5
+Cookie Scoped to parent domain
+Improper Error Message
+Malicious File Upload
+And any other
+Security Testing Tools
+Different Vulnerability Scanners
+BurpSuite Tool
+Scanning Application
+False Positive Elimination
+Bypassing Client Side Validations
+Any other tools
+Web Application Security Testing -  Live Project
+XAAMP Setup
+Live Application Setup
+Testing the Live Application
+Test Cases and other required docs
+Reporting
+Reporting
+Risk Rating Process
+Report Preparation
+More Practice Examples
+Different Websites where we can practice Security Testing
+Huge List of Security Testing Examples - Practical Demonstration with Solutions
+Assignments where and there required
+Planning Future (Next Steps)
+Mobile Security Testing
+Network Security Testing
+Cloud Security Testing
+API Security Testing
+Database Security Testing
+IOT Security Testing
+And many more
+Certifications
+Beginner Level Certifications
+Advanced Level Certifications
+Your Workplace
+Introducing Security Testing at your Workplace
+Creating Marketing or Proposal Documents for getting Security Testing Projects
+Interview Questions and Resources

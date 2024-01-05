@@ -1,0 +1,85 @@
+1.Appium 2 and Appium 1 is that Appium 2 uses the concept of plugins and drivers
+2. This makes for a better ecosystem, with cleaner code and improved flexibility and performance.
+3.he findBy* shortcut methods have been removed. Instead, use findElement[s](By. or AppiumBy.).
+  The MobileBy class is deprecated; consider using AppiumBy.
+ 4. Locator names in AppiumBy now follow camelCase naming, e.g., MobileBy.AccessibilityId becomes AppiumBy.accessibilityId.
+    AppiumBy.className should be used instead of Selenium’s By.className.
+ 5. Methods involving TimeUnit or simple numeric values for time now use java.time.Duration alternatives.
+ 6. TouchAction and MultiTouchAction classes are deprecated. Use W3C Actions or corresponding extension methods for the driver.
+ 7. Use XCUITestOptions for creating an XCUITestDriver instance.
+ 8. Utilize UiAutomator2Options to establish a UIAutomator2Driver instance
+ 9. Employ EspressoOptions to generate an EspressoDriver instance
+ 11. appium desktop is deprecated
+ 12. appium cli is recomended (appium server)
+ 13. plugin support is provided
+14. as it is using w3c protocol so it will not use desiredcapabities class we have to use baseoptionsclass for the specific
+capabilties
+15. use appiumBy class instead of MobileBy or findBy class and use camel casing for the methods
+no need of mobileElement and iosElement AndroidElement use only webelement
+ no longer contains the /wd/hub suffix
+
+Touch actions
+> touchActions and multitouch Actions are deprecated
+we have to use w3c actions class
+
+16. we can use default capabilities using command lines like below
+appium --default-capabilities '{"appium:chromedriverExecutable": "/path/to/chromedriver"}'
+17. appium driver list --updates >> to update the driver updates
+18. appium driver uninstall xcuitest >>>  uninstall
+19. to use specific port we can use like below appium --driver-xcuitest-webdriveragent-port=5000
+
+
+things to use
+AppiumBy >>  dont use androidby
+AndroidDriver
+adb shell dumpsys window windows | grep mFocusedApp >> to get app package and activity
+XCUITestOptions for ios and iosdriver
+
+
+
+
+<<<< Appium architechture > >>
+remotewebdriver (c) implements webdriver interface
+appiumdriver (c) extends remotewedriver
+AndroidDriver(c) extends appiumDriver
+IOSDriver (c) extends appiumDriver
+
+
+RemoteWebDriver
+    implements WebDriver,
+        JavascriptExecutor,
+        HasCapabilities,
+        HasFederatedCredentialManagement,
+        HasVirtualAuthenticator,
+        Interactive,
+        PrintsPage,
+        TakesScreenshot
+
+
+> keyEvent is class which has longPressKey ad presskey default methods
+
+IOSDriver extends AppiumDriver implements
+        SupportsContextSwitching,
+        SupportsRotation,
+        SupportsLocation,
+        HidesKeyboard,
+        HasDeviceTime,
+        PullsFiles,
+        InteractsWithApps,
+        HasAppStrings,
+        PerformsTouchActions,
+        HidesKeyboardWithKeyName,
+        ShakesDevice,
+        HasIOSSettings,
+        HasOnScreenKeyboard,
+        LocksDevice,
+        PerformsTouchID,
+        PushesFiles,
+        CanRecordScreen,
+        HasIOSClipboard,
+        ListensToSyslogMessages,
+        HasBattery<IOSBatteryInfo>
+
+
+  SupportsRotation is interface which has default methods getOrientation, rotate
+  there are two rotate methods first takes orientation(Enum) and another takes DeviceRotation(c) which is used to provide rotation in 0 to 360 degree

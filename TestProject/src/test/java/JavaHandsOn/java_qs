@@ -1,0 +1,9 @@
+1. mthod overloading
+2. method overriding
+3. upcasting :       Parent obj1 = (Parent) new Child();
+4. interface  :      Parent p = new Child();
+5. abstract class
+6.
+
+In Java, we rarely use Upcasting. We use it when we need to develop a code that deals with only the parent class.
+Downcasting is used when we need to develop a code that accesses behaviors of the child class.
