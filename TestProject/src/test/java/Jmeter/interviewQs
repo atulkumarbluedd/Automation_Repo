@@ -89,5 +89,13 @@ Q: best practices
 : always ramp up : means slowly add users
 : always have a baseline to compare tests
 
-Q:
+Q: http cookie manager
+A: whenever we login into any website then we get one cookie which is session cookie
+and website differentiate using session cookie whenver any resources are asked
+and this session cookies stored inside the browser
+and for this we have to add this sampler
+just add it under the thread group it will automatically store the cookies and use it in the further requests.
+we will get under the thread group config elements
 
+
+Q: basic

@@ -12,6 +12,29 @@ Better error handling and reporting:
 Enhanced logging and debugging:
 
 
+
+other changes
+> opera and phantom js browsers support got removed
+> we can capture a screen shot of specific web element and page as well below is the code
+
+{
+File file=logo.getScreenshotAs(OutputType.FILE);
+File destFile =new File(“logo.png”);
+FileUtils.copyFile(file,destfile);
+}
+> we can get the object location as well
+logo.getRect().getDimension().getHeight();
+logo.getRect().getDimension().getWidth();
+logo.getRect().getX();
+logo.getRect().getY();
+
+> now chromedriver does not extends remotewebdriver now it extends chromiumdriver which extends remotewebdriver
+and hence some dev tools related api's are getting used by chrome driver now
+
+
+
+
+
 *********************** detailed description of features selenium 4 ************************
 
 > without providing path of webdriver we can launch any browser firefox or chrome or edge
@@ -25,7 +48,15 @@ Enhanced GUI: Selenium Grid now has an improved user-friendly GUI, making it eas
 Compatibility with cloud platforms: selenium 4 is compatible with famous cloud platforms like, aws and azure etc.
 
 > Relative locators in selenium 4:
-it has introduced more meaningful locator strategy like above, below, "to the left of" etc
+it has introduced more meaningful locator strategy like
+1. above
+2. below
+3. to left of
+4. to right of
+5. near : Target web element which is away(approx. 50 pixels) from the specified element.
+all the relative locators supports with static method and like below we can use
+here relative locator is class which has static methods with
+    WebElement element=  driver.findElement(RelativeLocator.with().above().below().toLeftOf().toRightOf())
 
 > Support for Chrome Debugging Protocol :
 Selenium 4 features allow you to leverage the power of Chrome DevTools API for troubleshooting and fixing issues in your web applications.

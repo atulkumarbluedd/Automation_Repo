@@ -23,9 +23,6 @@ public class BrokenLinks {
             verifyLinks(url);
         }
         driver.quit();
-
-
-
     }
 
     private void verifyLinks(String link) throws Exception {

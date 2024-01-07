@@ -27,12 +27,7 @@
             <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools</artifactId>
-            <version>4.0.0-rc-1</version>
-        </dependency>
+      
 
 
         <!-- below libs are used for Excel reading poi and ooxlm -->

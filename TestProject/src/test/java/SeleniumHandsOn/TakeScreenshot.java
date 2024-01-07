@@ -24,14 +24,14 @@ public class TakeScreenshot {
 
 		driver = new ChromeDriver();
 		System.out.println("Launching chrome browser");
-		driver.get("https://demo.midtrans.com/");
+		driver.get("https://amazon.com");
 
 		driver.manage().window().maximize();
 
 		/* full page screenshot */
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(src, new File(".\\screenshots\\homepage.png"));
+		FileUtils.copyFile(src, new File(".\\screenshots\\homepage1.png"));
 
 	}
 
