@@ -1,0 +1,10 @@
+1. how to run headless mode appium tests
+
+> need to find
+
+
+q> how to run appium server in headless mode
+ > appium --no-reset --log appium.log >> using cmd
+
+Run the Appium server in headless mode using the --no-reset and --log options. --no-reset prevents the Appium server from resetting the app state between sessions, and --log specifies the log file.
+

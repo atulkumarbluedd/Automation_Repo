@@ -4,6 +4,7 @@ import JavaHandsOn.Person;
 import JavaHandsOn.PersonSerializableTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
@@ -29,7 +30,7 @@ public class dataProviderTest {
 
     @Test(dataProvider = "personDetails", dataProviderClass = Person.class,
             description = "Here we are using data provider from diff class !! ")
-    public void runDataProvider_diffClass(Person person) {
+    public void runDataProvider_diffClass(@NotNull Person person) {
         System.out.println(person.getAge());
         System.out.println(person.getName());
     }

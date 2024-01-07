@@ -1,0 +1,93 @@
+How to prepare for performance Test
+> get approvals from stakeholders
+> get application and environment
+> Requirements for the test > what exactly we want to test
+> Test data
+> Expected behaviour or Base Line (from stakeHolders)
+base line > for 10 users what is the avg time, all the matrix in the tabular format
+> what will happen if we are increasing the user from 10 to 100 and so on.
+> suppose you dont recieve from them then you create on your own base line.
+
+Test plan > it is simillar to project where we have thread groups and listeners, default
+
+Thread group > collocection of users and virtual threads
+it has number of threads:
+ ramp up period : (suppose you have given ramp up period for 10 users is 20 secs then in every 2 sec one user to be added ),
+ Loop count
+
+Q> what is tear down thread group
+> this thread group will be executed once all the existing thread group's execution got over then at last it will be executed
+Q> what is set up thread group ?
+> this is just like before class method in testng
+
+******************************* controllers *******************
+1. samplers 2. logical controllers
+> they are called controllers because they are the element which are actually processing the requests
+Http request sampler > if you are testing the web application
+FTP request sampler > if you are running FTP request
+JDBC request > if you are running database tests
+
+Logical controllers :
+these controllers are used to determine the results in which the results are processed
+***************** listeners ************************
+
+what is the deference b/w stop and shutdown
+> shutdown works gracefully but stop is just stop the thread
+
+Tree | graph | tabular listeners
+we can provide the file then results will be saved there
+what simple data listener do
+> it will simply store the data into the file provided will not log the data in the jmeter console
+Q> how to run test using cmd
+> jemeter -n -t "location of jmx file" -l "location of result file or csv"
+Q> how to add assertions
+> go to thread group > add > assertions
+: response assertion
+: Json assertion
+: size assertion
+: HTML assertion
+: xpath2 assertion
+: xpath assertion
+: duration assertion
+Q> what are config elements
+Ans These elements are executed first if you have these before executing any tests
+: csv data config
+: http header manager
+: HTTP cookie manager
+: HTTP cache manager
+: HTTP request default
+
+Q> Timers
+: thse are just to simulate with the real word
+i.e. if user comes then they simply not keep on filling the data, they take some pauses and then do some activity etc.
+generally we add "think time" and here we add "random count timer"
+
+Q> what is template
+>
+
+Q> test fragment ?
+A> using include_controller or Module_controller. The usage is to code reuse with the test plan.
+
+Q> what is not test elements
+: http request recorder : very much used
+: Http mirror server : rarely used
+: Property display : you can check all the properties of jmeter/system.
+
+Q> Execution order
+:configuration elements
+:Preprocessors
+:Timers
+:Samplers(actual requests)
+:Post-processors
+:Assertions
+:Listeners
+
+Q: best practices
+: always specific environment
+:Run you same tests with same infra and resources with same network stats
+:create more realstic performance tests : use think times and pauses
+: always ramp up : means slowly add users
+: always have a baseline to compare tests
+
+Q:
+

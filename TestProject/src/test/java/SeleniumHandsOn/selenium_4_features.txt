@@ -1,0 +1,71 @@
+1. run the tests in headless mode
+options.setArguments('--headless=new')
+2. selenium 4 features
+https://www.scaler.com/topics/selenium-tutorial/selenium-4-features/
+W3C WebDriver Protocol:
+Improved Selenium Grid: docker support is provided, it becomes easier to spin up containers using docker
+Native support for Chrome DevTools Protocol: Chrome development properties and leverage APIs offered by Chrome DevTools for better testing and bug resolution
+upgraded selenium IDE: enhanced element locator strategy, and the ability to export test cases in multiple language bindings.
+improved actions class : it has been introduced new methods of clicking, right-clicking, and double-clicking on web elements, making it easier to perform complex user interactions
+Updated Selenium Grid GUI: Selenium Grid now has an updated, user-friendly GUI, making it easier to manage and configure Grid instances.
+Better error handling and reporting:
+Enhanced logging and debugging:
+
+
+*********************** detailed description of features selenium 4 ************************
+
+> without providing path of webdriver we can launch any browser firefox or chrome or edge
+> Enhanced Selenium Grid
+Docker support:
+Kubernetes support: Selenium Grid can now be deployed on Kubernetes, a popular container orchestration platform, for better scalability and management of Grid instances.
+Simplified setup: Setting up Selenium Grid is now easier as there is no longer a need to set up and start hubs and nodes separately, we can deploy in standalone mode, hub-node mode or fully distributed mode.
+Support for IPv6 addresses and HTTPS protocol: allowing communication over IPv6 networks. Additionally, communication with the Grid can now be done using the HTTPS protocol, enhancing security
+TOML configuration files: Configuration files for setting up Grid instances can now be written in TOML
+Enhanced GUI: Selenium Grid now has an improved user-friendly GUI, making it easier to monitor grid gui
+Compatibility with cloud platforms: selenium 4 is compatible with famous cloud platforms like, aws and azure etc.
+
+> Relative locators in selenium 4:
+it has introduced more meaningful locator strategy like above, below, "to the left of" etc
+
+> Support for Chrome Debugging Protocol :
+Selenium 4 features allow you to leverage the power of Chrome DevTools API for troubleshooting and fixing issues in your web applications.
+Selenium 4 now supports the Chrome Debugging Protocol, which allows you to interact with the Chrome DevTools API and access advanced debugging capabilities directly from your Selenium tests
+sample code:
+// Enable the Chrome DevTools Protocol
+ChromeDevToolsProtocol chromeDevToolsProtocol = ((ChromeDriver) driver).getDevTools();
+chromeDevToolsProtocol.send(new Page.enable());
+
+// Capture a screenshot
+byte[] screenshot = chromeDevToolsProtocol.send(new Page.captureScreenshot());
+FileUtils.writeByteArrayToFile(new File("screenshot.png"), screenshot);
+
+> Better Window/Tab Management in Selenium 4 :
+Selenium 4 features introduce a new API called newWindow, With this new API, you can create and switch to a new window/tab without creating a new WebDriver object.
+
+> Deprecation of Desired Capabilities
+Selenium 4 deprecates the use of Desired Capabilities for configuring browser options and instead introduces a new Options pattern, which provides a more flexible and standardized way to configure browser-specific settings
+FirefoxOptions firefoxOptions = new FirefoxOptions();
+firefoxOptions.setBinary("/path/to/firefox/binary");
+firefoxOptions.setProfile(new FirefoxProfile());
+chromeOptions.addExtension(new File("/path/to/firefox/extension.crx"));
+WebDriver driver = new FirefoxDriver(firefoxOptions);
+
+> Modifications in the Actions Class : it is used for mouse and keyboard actions
+1.click(WebElement element): This method replaces the earlier approach of moveToElement(element).click() and allows you to click on a specific web element directly.
+2. clickAndHold(WebElement element): This method replaces the earlier approach of moveToElement(element).clickAndHold() and allows you to click and hold on a specific web element without releasing the click.
+3. contextClick(WebElement element): same reason like above
+4. doubleClick(WebElement element): same reason like above
+5. release(): This method was initially a part of the org.openqa.selenium.interactions.ButtonReleaseAction class, but it has been moved to the Actions class in Selenium 4. It is used to release the pressed mouse button after performing an action.
+
+
+
+
+
+
+
+
+
+
+
+
+
