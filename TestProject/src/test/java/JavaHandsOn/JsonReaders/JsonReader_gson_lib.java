@@ -1,8 +1,6 @@
 package JavaHandsOn.JsonReaders;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import org.testng.annotations.Test;
 
 import java.io.*;
@@ -39,11 +37,22 @@ public class JsonReader_gson_lib {
 
     }
 
-    @Test(description = "Directly print in the console from file !!")
+    @Test(description = "Print json in console using from jsonFile !! And then read from jsonString and get a specific result")
     public void readDatafromFile() throws Exception {
         String output = new Gson().toJson(JsonParser.parseReader(new FileReader("./Resources/newFile.json")));
         System.out.println(output);
+        /** json string to jsonObject*/
+        JsonElement jsonElement = JsonParser.parseString(output);
+        JsonObject object = jsonElement.getAsJsonObject();
+        System.out.println(object.get("Branch"));
+        System.out.println(object.get("College"));
 
+        /** another test case for json array */
+        String jsonString = new Gson().toJson(JsonParser.parseReader(new FileReader("./Resources/sample.json")));
 
+        JsonElement jsonElement1 = JsonParser.parseString(jsonString);
+        JsonArray jsonArray = jsonElement1.getAsJsonArray();
+        jsonArray.get(0);
+        System.out.println(jsonArray.get(0).getAsJsonObject().get("squadName"));
     }
 }
