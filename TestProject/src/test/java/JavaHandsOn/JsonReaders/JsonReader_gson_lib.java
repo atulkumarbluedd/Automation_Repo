@@ -49,7 +49,6 @@ public class JsonReader_gson_lib {
 
         /** another test case for json array */
         String jsonString = new Gson().toJson(JsonParser.parseReader(new FileReader("./Resources/sample.json")));
-
         JsonElement jsonElement1 = JsonParser.parseString(jsonString);
         JsonArray jsonArray = jsonElement1.getAsJsonArray();
         jsonArray.get(0);
