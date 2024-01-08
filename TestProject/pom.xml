@@ -27,8 +27,14 @@
             <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
-      
 
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.15.0</version>
+        </dependency>
 
         <!-- below libs are used for Excel reading poi and ooxlm -->
 

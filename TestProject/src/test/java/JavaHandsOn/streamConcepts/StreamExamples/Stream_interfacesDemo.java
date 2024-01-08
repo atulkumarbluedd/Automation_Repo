@@ -1,5 +1,7 @@
 package JavaHandsOn.streamConcepts.StreamExamples;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -128,21 +130,16 @@ public class Stream_interfacesDemo {
         // limit function >> here we have given 3 then only 3 elements will come
 
         // skip >> skip 3 elements
-        System.out.println("skip "+nums.stream().skip(3).toList());
+        System.out.println("skip " + nums.stream().skip(3).toList());
 
     }
 }
 
 
 class Person {
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Getter
+    @Setter
     private String name;
 
 }

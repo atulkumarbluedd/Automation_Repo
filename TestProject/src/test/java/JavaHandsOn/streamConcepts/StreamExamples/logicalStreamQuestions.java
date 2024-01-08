@@ -83,8 +83,7 @@ public class logicalStreamQuestions {
                         reducing(BinaryOperator.minBy(Comparator.comparing(Customer::getSalary)))));
         idWiseMinSalary.entrySet().forEach(System.out::println);
 
-
-
-
     }
+
+
 }

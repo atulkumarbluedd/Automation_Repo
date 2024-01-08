@@ -23,11 +23,8 @@ public class OperatingSystemFactory {
 
 	}
 /**
- * // One more advantage , tomorrow you planned to change OS here , you can simply change this and everything works as is.
+ * // One more advantage , tomorrow you planned to change OS here , you can simply change this and everything works as it is.
 
-Example creation of object.
-OperatingSystem operatingSystem = OperatingSystemFactory.getInstance("WINDOWS" , "WIN7" ,"x64");
-OperatingSystem operatingSystem2 = OperatingSystemFactory.getInstance("LINUX" , "DEB" ,"x64");
  * @param type
  * @param version
  * @param achitecture
@@ -45,4 +42,10 @@ OperatingSystem operatingSystem2 = OperatingSystemFactory.getInstance("LINUX" , 
 	}
 	}
 
+    public static void main(String[] args) {
+        OperatingSystem operatingSystem = OperatingSystemFactory.getInstance("WINDOWS" , "WIN7" ,"x64");
+        OperatingSystem operatingSystem2 = OperatingSystemFactory.getInstance("LINUX" , "DEB" ,"x64");
+
+
+    }
 }
