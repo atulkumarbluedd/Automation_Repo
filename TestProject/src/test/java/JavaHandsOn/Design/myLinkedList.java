@@ -1,5 +1,7 @@
 package JavaHandsOn.Design;
 
+import io.cucumber.java.mk_latn.No;
+
 public class myLinkedList {
     Node head;
 
@@ -28,36 +30,37 @@ public class myLinkedList {
             last.next = new_node;
         }
         return list;
+
     }
-    void printNthNodeFromLast(int n, myLinkedList list){
-        int len=0;
-        Node temp=head;
-        while (temp!=null){
-            temp=temp.next;
+
+    void printNthNodeFromLast(int n, myLinkedList list) {
+        int len = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
             len++;
         }
-        if(len<n) return;
+        if (len < n) return;
 
-        temp=head;
-        for (int i=1;i<len-n+1;i++){
-            temp=temp.next;
+        temp = head;
+        for (int i = 1; i < len - n + 1; i++) {
+            temp = temp.next;
         }
         System.out.println(temp.data);
     }
 
-    void addNodefront(myLinkedList list,int data){
-        Node temp=head;
-        Node new_node= new Node(data);
-        new_node.next=head;
+    void addNodefront(myLinkedList list, int data) {
+        Node new_node = new Node(data);
+        new_node.next = head;
         head = new_node;
     }
 
-    public void printlist(myLinkedList list){
-        Node curr=list.head;
-        while (curr!=null){
+    public void printlist(myLinkedList list) {
+        Node curr = list.head;
+        while (curr != null) {
 
             System.out.println(curr.data);
-            curr=curr.next;
+            curr = curr.next;
         }
 
     }
