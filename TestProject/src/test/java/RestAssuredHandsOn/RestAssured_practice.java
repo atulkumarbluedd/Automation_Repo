@@ -65,5 +65,74 @@ public class RestAssured_practice {
         Data[] data_Object = new ObjectMapper().readValue(new JSONArray(data_array).toString(), Data[].class);
         System.out.println(data_Object[1].getFirstName());
     }
+     /* like this kind of json means repeated objects. where starting is done via Json Arrays.
+    [
+        {
+            "postId": 1,
+            "id": 1,
+            "name": "id labore ex et quam laborum",
+            "email": "Eliseo@gardner.biz",
+            "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+        },
+        {
+            "postId": 1,
+            "id": 2,
+            "name": "quo vero reiciendis velit similique earum",
+            "email": "Jayne_Kuhic@sydney.com",
+            "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
+        },
+     */
+    @Test(description = "this test is to demonstrate Handle nested json !!")
+    public void nestedJsonHandling() {
+            // This is a sample test method
+            System.out.println("This is a sample test method in the sample class.");
+            RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+            io.restassured.response.Response response = RestAssured.given()
+                    .when()
+                    .get("/comments")
+                    .then()
+                    .extract().response();
+            // You can add assertions here to validate the response
+            // For example, you can check the status code
+
+            Assert.assertEquals(response.statusCode(), 200, "Expected status code is 200");
+            // You can also check the response body or other properties
+            Assert.assertFalse(response.jsonPath().getList("$").isEmpty(), "Response should contain comments");
+            // Print the response body for debugging
+//        System.out.println("Response Body: " + response.asString());
+            // Additional assertions can be added as needed
+            // This is just a sample test, you can modify it as per your requirements
+            System.out.println("Sample test executed successfully.");
+
+            // like this you can convert the response to a List of Comments objects
+            List<Comments> commentsList = response.as(new TypeRef<List<Comments>>() {});
+            // You can also convert the response to a custom class if needed
+            // For example, if you have a Comments class defined, you can do:
+//        List<Comments> commentsList = response.jsonPath().getList("$", Comments.class);
+            // Now you can work with the commentsList as needed
+            for (Comments comment : commentsList) {
+                System.out.println("Post ID: " + comment.getPostId());
+                System.out.println("Comment ID: " + comment.getId());
+                System.out.println("Name: " + comment.getName());
+                System.out.println("Email: " + comment.getEmail());
+                System.out.println("Body: " + comment.getBody());
+                System.out.println("-----------------------------");
+
+
+
+            }
+            // if you want to access a specific comment, you can do so like this:
+            // Assuming you want to access the first comment in the list [0] for first comment and [1] for second comment etc.
+            System.out.println("------+++++");
+            Comments firstComment = response.jsonPath().getObject("[0]", Comments.class);
+
+            System.out.println("First Comment Post ID: " + firstComment.getPostId());
+            System.out.println("First Comment ID: " + firstComment.getId());
+            System.out.println("First Comment Name: " + firstComment.getName());
+            System.out.println("First Comment Email: " + firstComment.getEmail());
+            System.out.println("First Comment Body: " + firstComment.getBody());
+            System.out.println("-----------------------------");
+
+        }
 
 }
