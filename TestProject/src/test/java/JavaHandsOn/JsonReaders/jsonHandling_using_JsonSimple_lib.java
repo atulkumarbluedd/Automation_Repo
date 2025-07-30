@@ -35,9 +35,10 @@ public class jsonHandling_using_JsonSimple_lib {
     public void readJson_from_jsonFile() throws IOException, ParseException {
         /* convert json file into java object*/
         JSONArray object = (JSONArray) new JSONParser().parse(new FileReader("./Resources/sample.json"));
-        JSONObject Jsoninput = (JSONObject) object.getFirst();
+        JSONObject Jsoninput = (JSONObject)object.get(0);
         System.out.println(Jsoninput);
         String squadName = (String) Jsoninput.get("squadName");
         System.out.println(squadName);
     }
+
 }

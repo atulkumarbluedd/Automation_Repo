@@ -1,11 +1,15 @@
 package RestAssuredHandsOn;
 
+import RestAssuredHandsOn.PoJO.Comments;
 import RestAssuredHandsOn.PoJO.Data;
-import RestAssuredHandsOn.PoJO.Response;
 import RestAssuredHandsOn.PoJO.Response1;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
+import io.restassured.common.mapper.TypeRef;
+import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
@@ -13,6 +17,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class RestAssured_practice {
 
@@ -42,7 +47,7 @@ public class RestAssured_practice {
         RestAssured.baseURI = "https://reqres.in/";
         Response response = RestAssured.given().queryParam("page", "2")
                 .when().get("/api/users/").as(Response.class);
-        System.out.println(response.getData()[3].getEmail());
+        System.out.println(new RestAssuredHandsOn.PoJO.Response().getData()[3].getEmail());
     }
 
     @Test(description = "this test is about how can we store a part of the response into the pojo" +
@@ -65,7 +70,9 @@ public class RestAssured_practice {
         Data[] data_Object = new ObjectMapper().readValue(new JSONArray(data_array).toString(), Data[].class);
         System.out.println(data_Object[1].getFirstName());
     }
-     /* like this kind of json means repeated objects. where starting is done via Json Arrays.
+
+
+    /* like this kind of json means repeated objects. where starting is done via Json Arrays.
     [
         {
             "postId": 1,
@@ -105,10 +112,11 @@ public class RestAssured_practice {
             System.out.println("Sample test executed successfully.");
 
             // like this you can convert the response to a List of Comments objects
-            List<Comments> commentsList = response.as(new TypeRef<List<Comments>>() {});
+            List<Comments> commentsList = response.as(new TypeRef<>() {
+            });
             // You can also convert the response to a custom class if needed
             // For example, if you have a Comments class defined, you can do:
-//        List<Comments> commentsList = response.jsonPath().getList("$", Comments.class);
+
             // Now you can work with the commentsList as needed
             for (Comments comment : commentsList) {
                 System.out.println("Post ID: " + comment.getPostId());
@@ -117,10 +125,20 @@ public class RestAssured_practice {
                 System.out.println("Email: " + comment.getEmail());
                 System.out.println("Body: " + comment.getBody());
                 System.out.println("-----------------------------");
-
-
-
             }
+
+
+            // one more way to convert the response into List of Comments objects
+        List<Comments> commentsList1 = response.jsonPath().getList("$", Comments.class);
+        for (Comments comment : commentsList1) {
+            System.out.println("Post ID: " + comment.getPostId());
+            System.out.println("Comment ID: " + comment.getId());
+            System.out.println("Name: " + comment.getName());
+            System.out.println("Email: " + comment.getEmail());
+            System.out.println("Body: " + comment.getBody());
+            System.out.println("-----------------------------");
+        }
+
             // if you want to access a specific comment, you can do so like this:
             // Assuming you want to access the first comment in the list [0] for first comment and [1] for second comment etc.
             System.out.println("------+++++");
@@ -135,4 +153,92 @@ public class RestAssured_practice {
 
         }
 
+    @Test(description = "This test is to filter comments by postId using Groovy-based JsonPath")
+    // Note: Ensure you have the necessary dependencies for RestAssured and Gson in your project
+    public void testFilterCommentsByPostId() {
+        // Make the API call
+        Response responseBody = RestAssured
+                .get("https://jsonplaceholder.typicode.com/comments")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        // Filter using Groovy-based JsonPath: postId == 1
+        // ==~: Groovy regex match operator
+        List<Comments> filteredComments = responseBody.jsonPath()
+                .getList("findAll { it.postId == 1 && it.email ==~ /.*\\.biz$/ }", Comments.class);
+        /**
+         * | Part    | Meaning                                                                            |
+         * | ------- | ---------------------------------------------------------------------------------- |
+         * | `/.../` | Delimiters for a regular expression in Groovy                                      |
+         * | `.*`    | Match **any number of any characters** (except newline)                            |
+         * | `\\.`   | A **literal dot `.`**, because in regex `.` means "any character", so we escape it |
+         * | `biz`   | Just the string `"biz"`                                                            |
+         * | `$`     | End of the string (ensures it ends with `.biz`)                                    |
+         *
+         *   \. → escapes dot in regex
+         * But \. in Java must be written as "\\." in a string
+         * In Groovy regex /.../, only one backslash is needed But inside Java string literals, you must double it, so:
+         *
+         * | Context        | Regex Pattern  |
+         * | -------------- | -------------- |
+         * | Java string    | `"^.*\\.biz$"` |
+         * | Groovy pattern | `/.*\.biz$/`   |
+         */
+
+        // Assert the list is not empty
+        Assert.assertFalse(filteredComments.isEmpty(), "Filtered list should not be empty");
+
+        // Assert all postIds in filtered list are 1
+        for (Comments comment : filteredComments) {
+            Assert.assertEquals(comment.getPostId(), 1, "postId mismatch in comment: " + comment.getId());
+        }
+
+        // Print for reference
+        filteredComments.forEach(c -> System.out.println("ID: " + c.getId() + " Email: " + c.getEmail()));
+    }
+
+
+@Test(description = "one more way to deserialize the response using Gson")
+    public void deserializeResponseUsingGson() {
+    RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+     Response responseBody =  RestAssured.given()
+            .when()
+            .get("/comments")
+            .then()
+            .extract().response();
+
+     Comments comments=new Gson().fromJson(responseBody.getBody().asString(), Comments.class);
+
+
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+
 }
+
+}
+
+
+
+
+/** 2nd way to convert response into List of Comments objects using Gson
+ * Gson gson = new Gson();
+ * Type type = new TypeToken<List<Comments>>(){}.getType();
+ * List<Comments> commentsList = gson.fromJson(response.asString(), type);
+ */
+
+
+/* using object mapper
+ObjectMapper mapper = new ObjectMapper();
+List<Comments> commentsList = mapper.readValue(response.asString(), new TypeReference<List<Comments>>() {});
+
+ */
+
+
+/**
+ * | Library     | Type Needed                       | Notes                        |
+ * | ----------- | --------------------------------- | ---------------------------- |
+ * | RestAssured | `response.as(new TypeRef<>() {})` | Uses Jackson internally      |
+ * | Gson        | `new TypeToken<List<Comments>>()` | Good for stand-alone parsing |
+ */
+
