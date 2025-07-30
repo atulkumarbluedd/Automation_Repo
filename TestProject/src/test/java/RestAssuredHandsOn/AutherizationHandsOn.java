@@ -1,9 +1,9 @@
 package RestAssuredHandsOn;
 
+
+import RestAssuredHandsOn.ApiUtils.HybridOAuthTokenManager;
 import RestAssuredHandsOn.PoJO.Response1;
-import io.opentelemetry.sdk.logs.data.Body;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
@@ -14,8 +14,6 @@ import io.restassured.specification.SpecificationQuerier;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
 
 import static io.restassured.RestAssured.given;
 
@@ -122,17 +120,17 @@ public class AutherizationHandsOn {
 
         /* get body*/
         String body = queryRequest.getBody();
-        System.out.println(STR."body \{body}");
+        ////System.out.println(STR."body \{body}");
 
         /*get base PATH*/
         String retrievableBasePath = queryRequest.getBasePath();
-        System.out.println(STR." Base Path \{retrievableBasePath}");
+        ////System.out.println(STR." Base Path \{retrievableBasePath}");
 
         String baseUri = queryRequest.getBaseUri();
-        System.out.println(STR."Base URI \{baseUri}");
+        ////System.out.println(STR."Base URI \{baseUri}");
 
         /** get request headers **/
-        System.out.println(STR." printing header values *******");
+        ////System.out.println(STR." printing header values *******");
         Headers allHeaders = queryRequest.getHeaders();
         for (Header header : allHeaders)
             System.out.println(header.getName() + "::" + header.getValue());
@@ -162,6 +160,28 @@ public class AutherizationHandsOn {
                 .auth().
                 oauth("consumerId", "consumerSecret", "accessToken", "toeknSecret");
 
+    }
+
+    /**
+     * let’s implement token caching with expiration logic in Java using Rest Assured, so that:
+     * We don't hit the OAuth token endpoint every time. 
+     * We reuse the token until it expires.
+     * using Threadlocal and syncronised
+     */
+    @Test(description = "How to cache token and use it in further requests for OAuth2")
+    public void cacheToken() {
+        String token = HybridOAuthTokenManager.getAccessToken();
+
+        Response response = given()
+                .baseUri("https://api.example.com") // Replace with your API base
+                .auth().oauth2(token)
+                .when()
+                .get("/your/protected/resource") // Replace with endpoint
+                .then().log().all()
+                .statusCode(200)
+                .extract().response();
+
+        System.out.println(response.getBody().asString());
     }
 
 
