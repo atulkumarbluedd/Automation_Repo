@@ -16,16 +16,24 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.authentication.OAuthSignature.QUERY_STRING;
 
 public class AutherizationHandsOn {
 
     /**
+     * same autherization can be used in JWT as well
      * various authentication
-     * 1. form authentication
-     * 2. basic authentication
+     * 1. form authentication ::
+     * 2. basic authentication :: username and password
      * 3. preemptive authentication
      * 4. Oauth1 > consumerId, consumerSecret, accessToken, tokenSecret
-     * 5. Oauth2
+     * 5. Oauth2 > clientId, clientSecret, accessToken, refreshToken
+     * 6. API key authentication > this is used in most of the cases where we have to use API key
+     * 7. Bearer token authentication > this is used in most of the cases where we have to use bearer token
+     * 8. Digest authentication >
+     * 9. HMAC authentication > this is used in most of the cases where we have to use HMAC authentication
+     * 10. SAML authentication > this is used in most of the cases where we have to use SAML authentication
+     * 11. JWT authentication > this is used in most of the cases where we have to use JWT authentication
      */
     String apikey = "def5bd8d6d6376d2b658b9eb9b2f0f1e";
     static String access_token = "";
@@ -45,7 +53,7 @@ public class AutherizationHandsOn {
                 .queryParam("appid", "98d64d858ac091f98d0d8758cf96d20d").get();
 
         Assert.assertEquals(response.statusCode()/*actual*/, 200/*expected*/, "check for api call");
-        System.out.println(response.statusLine());
+        System.out.println(response.statusLine() + " :: status line");
         System.out.println(response.body().asString());
     }
 
@@ -158,15 +166,15 @@ public class AutherizationHandsOn {
     public void oauth1_0() {
         given().accept(ContentType.JSON)
                 .auth().
-                oauth("consumerId", "consumerSecret", "accessToken", "toeknSecret");
+                oauth("consumerKey", "consumerSecret", "accessToken", "toeknSecret", QUERY_STRING)
+                .when().get("https://api.example.com/protected/resource"); // Replace with your API endpoint;
 
     }
 
     /**
      * let’s implement token caching with expiration logic in Java using Rest Assured, so that:
-     * We don't hit the OAuth token endpoint every time. 
+     * We don't hit the OAuth token endpoint every time.
      * We reuse the token until it expires.
-     * using Threadlocal and syncronised
      */
     @Test(description = "How to cache token and use it in further requests for OAuth2")
     public void cacheToken() {
@@ -185,4 +193,180 @@ public class AutherizationHandsOn {
     }
 
 
+/** other types of OAuth2 grants
+ * OAuth2 has several grant types, each suited for different use cases. Here’s a quick
+ * reference table to help you understand when to use each type:
+ *
+ *
+ *
+ * | Grant Type                        | Use Case                                    | Requires User Login?            | Secure? | Notes                          |
+ * | --------------------------------- | ------------------------------------------- | ------------------------------- | ------- | ------------------------------ |
+ * | **1. Authorization Code**         | Web apps (browser to server)                | ✅ Yes                           | ✅ High  | Recommended for user login     |
+ * | **2. Client Credentials**         | Server-to-server, no user involved          | ❌ No                            | ✅ High  | Great for backend services     |
+ * | **3. Password (ROPC)**            | Trusted apps using user’s username/password | ✅ Yes                           | ⚠️ Low  | Not recommended for most cases |
+ * | **4. Implicit**                   | Single-page apps (deprecated)               | ✅ Yes                           | ❌ Low   | No longer recommended          |
+ * | **5. Device Authorization Grant** | Devices without browsers (e.g., TV login)   | ✅ Yes                           | ✅ High  | Good for IoT, consoles         |
+ * | **6. Refresh Token**              | Used to get a new access token              | ❌ No (if already authenticated) | ✅ High  | Helps maintain session         |
+ */
+
+
+    /**
+     * 1️⃣ Username & Password (Basic Login)
+     * Sample API assumptions:
+     * POST /auth/login
+     * <p>
+     * Request body: JSON { "username": "admin", "password": "password" }
+     * <p>
+     * Response JSON: { "token": "jwt_token_here" }
+     */
+
+
+    public static String getTokenWithUsernamePassword() {
+        Response response = given()
+                .contentType("application/json")
+                .body("{ \"username\": \"admin\", \"password\": \"password\" }")
+                .when()
+                .post("http://localhost:3000/auth/login")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        return response.jsonPath().getString("token");
+    }
+
+    /**
+     * 2️⃣ Client Credentials (API Keys)
+     * Typical OAuth2 client credentials flow:
+     * POST /oauth/token
+     * <p>
+     * Form params: grant_type=client_credentials, client_id, client_secret
+     * <p>
+     * Response JSON: { "access_token": "jwt_token_here", ... }
+     */
+    public static String getTokenWithClientCredentials() {
+        Response response = given()
+                .contentType("application/x-www-form-urlencoded")
+                .formParam("grant_type", "client_credentials")
+                .formParam("client_id", "your_client_id")
+                .formParam("client_secret", "your_client_secret")
+                .when()
+                .post("http://localhost:3000/oauth/token")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        return response.jsonPath().getString("access_token");
+    }
+
+
+    /**
+     * 3️⃣ Social Login / OAuth (Example: Using Google token)
+     * Flow (simplified):
+     * Client gets Google ID token from Google sign-in
+     * <p>
+     * Sends it to backend POST /auth/google
+     * <p>
+     * Backend verifies and returns JWT token
+     */
+
+    public static String getTokenWithGoogleToken(String googleIdToken) {
+        Response response = given()
+                .contentType("application/json")
+                .body("{ \"idToken\": \"" + googleIdToken + "\" }")
+                .when()
+                .post("http://localhost:3000/auth/google")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        return response.jsonPath().getString("token");
+    }
+
+    /**
+     * Flow:
+     * POST /auth/refresh
+     * <p>
+     * Body: { "refreshToken": "refresh_token_here" }
+     */
+    public static String refreshJwtToken(String refreshToken) {
+        Response response = given()
+                .contentType("application/json")
+                .body("{ \"refreshToken\": \"" + refreshToken + "\" }")
+                .when()
+                .post("http://localhost:3000/auth/refresh")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        return response.jsonPath().getString("token");
+    }
+
+//todo: ************** OAUTH2 AUTOMATION **************************
+
+    /**
+     * In very simple terms OAuth2 is a protocol Automation
+     */
+
+    public static void Oauth2Automation() {
+        // Step 1: Get token using username/password
+        Response response = given()
+                .contentType("application/x-www-form-urlencoded")
+                .formParam("grant_type", "client_credentials")
+                .formParam("client_id", "clientId")
+                .formParam("client_secret", "clientSecret")
+                .when()
+                .post("https://your-auth-server.com/token");
+
+        String accessToken = response.jsonPath().getString("access_token");
+
+// Use token
+        given()
+                .auth()
+                .oauth2(accessToken)
+                .when()
+                .get("/your-protected-api");
+    }
+
+    // todo: ************** API KEY Authentication **************************
+
+    public static void apiKeyAuthentication() {
+        // Step 1: Get API key from your service provider
+
+        given()
+                .header("x-api-key", "abc123");
+
+    }
+    public static void apiKeyAuthenticationWithQueryParam() {
+        // Step 1: Get API key from your service provider
+        given()
+                .queryParam("api_key", "abc123")
+                .when()
+                .get("/your-api-endpoint")
+                .then()
+                .statusCode(200);
+    }
+    //todo: ************** Form Authentication using cookie session **************************
+
+    public void  formAuthentication() {
+        // Step 1: Login - send form parameters, get session cookie
+        String sessionId =
+                given()
+                        .formParam("username", "admin")
+                        .formParam("password", "admin123")
+                        .when()
+                        .post("/login")
+                        .then()
+                        .statusCode(200)
+                        .extract()
+                        .cookie("JSESSIONID"); // or whatever cookie your app uses
+
+        // Step 2: Use session cookie to access protected resource
+        given()
+                .cookie("JSESSIONID", sessionId)
+                .when()
+                .get("/protected/resource")
+                .then()
+                .statusCode(200)
+                .log().body();
+    }
 }
