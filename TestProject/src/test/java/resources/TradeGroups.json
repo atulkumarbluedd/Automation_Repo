@@ -1,0 +1,15 @@
+{
+  "group1Trades": [
+    { "orderId": "O1001", "symbol": "INFY", "price": 1500.5, "quantity": 10, "timestamp": 1693500300 },
+    { "orderId": "O1002", "symbol": "TCS", "price": 3500.0, "quantity": 20, "timestamp": 1693500310 }
+  ],
+  "group2Trades": [
+    { "orderId": "O1003", "symbol": "WIPRO", "price": 400.0, "quantity": 5, "timestamp": 1693500320 }
+  ],
+  "group3Trades": [
+    { "orderId": "O1004", "symbol": "HCL", "price": -200.0, "quantity": 3, "timestamp": 1693500350 }
+  ]
+}
+
+
+

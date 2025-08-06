@@ -1,6 +1,12 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+package weightedAvg;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import lombok.Data;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -56,40 +62,37 @@ import java.util.*;
  *
  *
  */
-public class findWeightedAveragePrice {
-    public static void main(String[] args) {
-        String jsonData = "[\n" +
-                "  {\"orderId\": \"O1001\", \"symbol\": \"INFY\", \"price\": 1500.50, \"quantity\": 10, \"timestamp\": 1693500300},\n" +
-                "  {\"orderId\": \"O1002\", \"symbol\": \"TCS\",  \"price\": 3500.00, \"quantity\": 20, \"timestamp\": 1693500310},\n" +
-                "  {\"orderId\": \"O1001\", \"symbol\": \"INFY\", \"price\": 1500.50, \"quantity\": 10, \"timestamp\": 1693500300},\n" +
-                "  {\"orderId\": \"O1003\", \"symbol\": \"INFY\", \"price\": -1501.00, \"quantity\": 5,  \"timestamp\": 1693500320}\n" +
-                "]";
+public class findWeightedAveragePriceusingPojo {
+    public static void main(String[] args) throws IOException {
+
+        String jsonData= Files.readString(Paths.get(System.getProperty("user.dir")+"/src/test/java/resources/Trades.json"));
+
+//                + "/src/test/resources/trades.json"));
+        Gson gson = new Gson();
+        List<Trade> trades=gson.fromJson(jsonData,new TypeToken<List<Trade>>(){}.getType());
+//        ObjectMapper mapper = new ObjectMapper();
+//        List<Trade> trades= mapper.readValue(jsonData, new TypeReference<>() {});
+
         Set<TradeKey> seen = new HashSet<>();
         List<RejectedTrade> rejected = new ArrayList<>();
         Map<String, Double> totalPxQty = new HashMap<>();
         Map<String, Integer> totalQty = new HashMap<>();
 
-        JSONArray tradesArray = new JSONArray(jsonData);
-        for (int i = 0; i < tradesArray.length(); i++) {
-            JSONObject trade = tradesArray.getJSONObject(i);
-            String orderId = trade.getString("orderId");
-            String symbol = trade.getString("symbol");
-            double price = trade.getDouble("price");
-            int quantity = trade.getInt("quantity");
-            long timestamp = trade.getLong("timestamp");
 
-            TradeKey key = new TradeKey(orderId, timestamp);
+
+        for (Trade trade : trades) {
+            TradeKey key = new TradeKey(trade.getOrderId(), trade.getTimestamp());
 
             if (seen.contains(key)) {
-                rejected.add(new RejectedTrade(orderId, symbol, "Duplicate trade detected"));
+                rejected.add(new RejectedTrade(trade.getOrderId(), trade.getSymbol(), "Duplicate trade detected"));
             }
-            seen.add(key);
-            if(price<=0 || quantity<=0) {
-                rejected.add(new RejectedTrade(orderId, symbol, "Invalid price/quantity " + price));
+            seen.add(key); // if will not matter if you add again.
+            if(trade.getPrice()<=0 || trade.getQuantity()<=0) {
+                rejected.add(new RejectedTrade(trade.getOrderId(), trade.getSymbol(), "Invalid price/quantity " + trade.getPrice()));
             }
             else {
-                totalPxQty.merge(symbol, price * quantity, Double::sum);
-                totalQty.merge(symbol, quantity, Integer::sum);
+                totalPxQty.merge(trade.getSymbol(), trade.getPrice() * trade.getQuantity(), Double::sum);
+                totalQty.merge(trade.getSymbol(), trade.getQuantity(), Integer::sum);
             }
 
         }
@@ -146,6 +149,18 @@ public class findWeightedAveragePrice {
         public String toString() {
             return "{'orderId': '" + orderId + "', 'symbol': '" + symbol + "', 'reason': '" + reason + "'}";
         }
+    }
+
+
+
+
+    @Data
+    public static class Trade {
+        private String orderId;
+        private String symbol;
+        private double price;
+        private int quantity;
+        private long timestamp;
     }
 
 }
