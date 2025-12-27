@@ -98,8 +98,8 @@ public class Stream_interfacesDemo {
         // if none of the element match the criteria then return true
 
         System.out.println("any match  " + list.stream().anyMatch(e -> e == 5));
-        System.out.println(STR."all match \{list.stream().allMatch(e -> e / 1 == e)}");
-        System.out.println(STR."none match \{list.stream().noneMatch(e -> e == 5)}");
+//        System.out.println(STR."all match \{list.stream().allMatch(e -> e / 1 == e)}");
+//        System.out.println(STR."none match \{list.stream().noneMatch(e -> e == 5)}");
 
 
     }

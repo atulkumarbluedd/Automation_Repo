@@ -1,6 +1,7 @@
 package RestAssuredHandsOn;
 
-import RestAssuredHandsOn.PoJO.User;
+import RestAssuredHandsOn.PoJO.Comments;
+
 import com.google.gson.Gson;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -29,7 +30,7 @@ public class SchemaValidation {
 
             // Deserialize using Gson
             String responseBody = response.getBody().asString();
-            User user = new Gson().fromJson(responseBody, User.class);
+        Comments user = new Gson().fromJson(responseBody, Comments.class);
 
             // Basic assertions using POJO
             assert user.getId() == 1;

@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 
 
 public class BrokenLinks {
@@ -26,16 +25,28 @@ public class BrokenLinks {
     }
 
     private void verifyLinks(String link) throws Exception {
-        URL url = new URL(link);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setConnectTimeout(3000); // set connection timeout to 3 secs
-            httpURLConnection.connect();
+        // skip null or empty hrefs
+        if (link == null || link.trim().isEmpty()) {
+            System.out.println("Skipping empty href");
+            return;
+        }
+        // only check http or https links
+        if (!(link.startsWith("http://") || link.startsWith("https://"))) {
+            System.out.println("Skipping non-http(s) link: " + link);
+            return;
+        }
 
-            if (httpURLConnection.getResponseCode() == 200) {
-                System.out.println(STR."response of the url --> \{httpURLConnection.getResponseMessage()}");
-            } else {
-                System.out.println(STR."URL is broken \{url}");
-            }
+        URL url = new URL(link);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        httpURLConnection.setConnectTimeout(3000); // set connection timeout to 3 secs
+        httpURLConnection.connect();
+
+        int code = httpURLConnection.getResponseCode();
+        if (code == 200) {
+            System.out.println("response of the url --> " + httpURLConnection.getResponseMessage());
+        } else {
+            System.out.println("URL is broken " + url + " (HTTP response code: " + code + ")");
+        }
 
 
     }

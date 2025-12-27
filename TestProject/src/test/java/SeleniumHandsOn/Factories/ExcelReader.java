@@ -45,9 +45,14 @@ public class ExcelReader {
 
     public static void printCellvalue(Cell cell) {
         switch (cell.getCellType()) {
-            case STRING -> System.out.print(STR."\{cell.getStringCellValue()}\t");
-            case NUMERIC -> System.out.print(STR."\{cell.getNumericCellValue()}\t");
-            case BOOLEAN -> System.out.print(STR."\{cell.getBooleanCellValue()}\t");
+            case STRING ->
+                    System.out.print(cell.getStringCellValue() + "\t");
+
+            case NUMERIC ->
+                    System.out.print(cell.getNumericCellValue() + "\t");
+
+            case BOOLEAN ->
+                    System.out.print(cell.getBooleanCellValue() + "\t");
             // Handle other cell types as needed
         }
     }

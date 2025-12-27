@@ -152,7 +152,7 @@ public class StreamDemo {
 
         // Sort the String array in a custom order
         Arrays.sort(numStrings, (a, b) -> (b + a).compareTo(a + b));
-        System.out.println(STR."\{Arrays.toString(numStrings)} nums string");
+        System.out.println(String.format("nums string",Arrays.toString(numStrings)));
         // Handle the case where the result is "00" (multiple zeros)
         if (numStrings[0].equals("0")) {
             return "0";

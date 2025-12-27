@@ -75,7 +75,11 @@ public class seleniumBaseUtils {
 
 	public static String getScreenShotDestination(String testCaseName) throws WebDriverException, Exception {
 		File source = ((TakesScreenshot) Drivermanager.getDriver()).getScreenshotAs(OutputType.FILE);
-		String destination = STR."\{System.getProperty("user.dir")}//reports\{testCaseName}.png";
+
+		String destination = System.getProperty("user.dir")
+				+ File.separator + "reports"
+				+ File.separator + testCaseName + ".png";
+
 		FileUtils.copyFile(source, new File(destination));
 		return destination;
 
@@ -93,7 +97,7 @@ public class seleniumBaseUtils {
 
 	@AfterSuite
 	public void printCount() {
-		System.out.println(STR."count is >>>>>>>>>>>>>>>>>>>>>>>> \{count}");
+		String.format("count is >>>>>>>>>>>>>>>>>>>>>>>> %s",count);
 	}
 
 	/**

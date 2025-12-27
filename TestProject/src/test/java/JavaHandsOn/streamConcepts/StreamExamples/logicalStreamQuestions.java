@@ -50,7 +50,8 @@ public class logicalStreamQuestions {
     public void print_active_customers() {
         List<Customer> customers = EkartDataBase.getAll();
         long active_customers_count = customers.stream().filter(customer -> customer.getStatus().equalsIgnoreCase("active")).count();
-        System.out.println(STR."active employee count \{active_customers_count}");
+        System.out.println(String.format("active employee count %s",active_customers_count));
+
     }
 
     @Test(description = "print max and min salary from customer")
@@ -58,10 +59,11 @@ public class logicalStreamQuestions {
         List<Customer> customers = EkartDataBase.getAll();
         Optional<Customer> minSalary = customers.stream().min(Comparator.
                 comparing(Customer::getSalary));
-        System.out.println(STR."minSalary is \{minSalary}");
+
+        System.out.println(String.format("minsalary is %s",minSalary));
         Optional<Customer> maxSalary = customers.stream().max(Comparator.
                 comparing(Customer::getSalary));
-        System.out.println(STR."maxSalary is \{maxSalary}");
+        System.out.println(String.format("maxSalary is %s",maxSalary));
 
         // if we want to get the exact salary what it is then use like below
         List<Customer> ans = maxSalary.stream().toList();

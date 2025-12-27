@@ -1,4 +1,4 @@
-package kafka.tests;
+package Kafka.tests;
 import kafka.Utils.KafkaConsumerUtils;
 import kafka.Utils.KafkaProducerUtils;
 import org.testng.Assert;

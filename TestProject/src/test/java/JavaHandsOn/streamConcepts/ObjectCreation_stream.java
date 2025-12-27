@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.lang.StringTemplate.STR;
+
 
 public class ObjectCreation_stream {
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class ObjectCreation_stream {
             case 2 -> System.out.println("It's a laptop!");
             case 3 -> System.out.println("It's a desktop!");
             case 4, 5 -> System.out.println("It's a mobile phone!");
-            default -> throw new IllegalStateException(STR."Unexpected value: \{n}");
+            default -> throw new IllegalStateException(String.format("Unexpected value: %s",n));
         };
     }
 }
