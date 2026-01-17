@@ -183,7 +183,7 @@ public class StreamDemo {
 
         List<Integer> list = Arrays.stream(nums).boxed().toList();
         List<Integer> ans = list.stream().filter(a -> a != 0).filter(a -> !(list.contains(a + 1) && list.contains(a - 1))).toList();
-        var val = ans.getFirst();
+        var val = ans.get(0);
         var anss = list.contains(val - 1) ? val + 1 : val - 1;
         System.out.println(anss);
         System.out.println(val);

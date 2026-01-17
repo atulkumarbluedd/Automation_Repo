@@ -67,7 +67,7 @@ public class logicalStreamQuestions {
 
         // if we want to get the exact salary what it is then use like below
         List<Customer> ans = maxSalary.stream().toList();
-        System.out.println(ans.getFirst().getSalary());
+        System.out.println(ans.get(0).getSalary());
 
     }
 
